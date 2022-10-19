@@ -1,0 +1,15 @@
+@import '../abstracts/variables';
+
+.forget-password{
+    text-decoration: underline;
+    width: 100%;
+    color: $purple;
+
+}
+.register-href{
+    text-decoration: underline;
+    color: $purple;
+}
+.title-login{
+    font-size: 1.4rem;
+}

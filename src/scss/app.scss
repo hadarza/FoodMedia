@@ -1,0 +1,37 @@
+@use './abstracts/functions';
+@use './abstracts/mixins';
+@use './abstracts/variables';
+@use './base/reset';
+@use './Components/buttons';
+@use './Components/carousal';
+@use './Components/drawer';
+@use './Components/slider';
+@use './layout/footer';
+@use './layout/grid';
+@use './layout/header';
+@use './layout/navigation';
+@use './layout/siderbar';
+@use './pages/loadingApp';
+@use './pages/carouselSkip';
+@use './pages/_register';
+@use './pages/_login';
+@use './pages/_home';
+
+@font-face {
+    font-family: "Assistant-bold";
+    src: local("Assistant-bold"),
+    url('../constants/fonts/Assistant-Bold.ttf') format("truetype");
+  }
+
+  
+@font-face {
+  font-family: "Assistant-Light";
+  src: local("Assistant-Light"),
+  url('../constants/fonts/Assistant-Light.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "Assistant-Regular";
+  src: local("Assistant-Regular"),
+  url('../constants/fonts/Assistant-Regular.ttf') format("truetype");
+}

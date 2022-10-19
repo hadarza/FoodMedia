@@ -1,0 +1,105 @@
+@import '../abstracts/mixins';
+
+
+*{
+    direction: ltr;
+    font-family: 'Assistant-Bold';
+}
+body{
+    margin: 0;
+    height:100%  
+}
+html{
+  scroll-behavior : smooth;
+  height: 100%;
+  font-size: 16px;
+  
+} 
+#root{
+  height: 100%;
+}
+.relative{
+    position: relative
+}
+.flex{
+    @include flex;
+}
+.flex-col{
+    @include flex-col;
+}
+.flex-around-col{
+    @include flex-around-col;
+}
+.flex-around-row{
+    @include flex-around-row;
+}
+.flex-between-row{
+    @include flex-between-row;
+}
+.only-flex{
+    display: flex;
+}
+.wrap{
+    flex-wrap: wrap;
+}
+a{
+    text-decoration: none;
+}
+
+.p-2{
+    padding: 0.2rem;
+}
+.m-r-2{
+    margin-right: 0.2rem;
+}
+.width-100{
+    width: 100%;
+}
+.hidden{
+    display: none;
+}
+.visibility-hide{
+    visibility: hidden;
+}
+
+.disabled{
+    opacity: 0.6;
+    cursor: auto;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+.react-tel-input .form-control{
+    border: none !important;
+}
+.react-tel-input .flag-dropdown{
+    border: none !important;
+    background-color: white !important;
+}
+.react-tel-input .selected-flag{
+    border-radius: 0px !important;
+}
+
+.react-tel-input .form-control{
+    height: 2.7rem !important;
+    box-shadow: rgb(17 12 46 / 15%) 0px 48px 100px 0px;
+    background-color: white !important;
+    width: 100% !important;
+}
+
+.country-list{
+    display: flex;
+    flex-direction: column;
+}
+.search{
+    justify-content: left !important;
+}

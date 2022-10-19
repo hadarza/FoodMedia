@@ -1,0 +1,39 @@
+@import '../abstracts/mixins';
+@import '../abstracts/variables';
+.header-menu{
+    display: flex;
+    padding: 1rem;
+  
+  }
+  .settings{
+    @include flex;
+    flex: 1;
+  }
+  .input-search{
+    >input{
+      border: none;
+      height: 2rem;
+      width: 100%;
+      border-radius: 15px;
+      background-color: $gray;
+  
+      &:focus{
+        outline: 1px solid black;
+      }
+    }
+    flex: 3;
+  }
+  
+  .search{
+    @include flex;
+    flex:1;
+  }
+  
+  /*Header - header categories*/
+  
+  .title-categories{
+    padding: 1rem;
+  }
+  .slick-list{
+    width: 100vw;
+  }

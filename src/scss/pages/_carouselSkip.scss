@@ -1,0 +1,66 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+.title-carousel{
+    color:black;
+    font-size: 2.2rem;
+    text-align: center;
+    margin: 1rem;
+
+}
+.subTitle-carousel{
+    margin: 1.5rem !important;
+    color: gray;
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: 3rem;
+}
+
+
+.div-titles-carousel{
+    width: 70%;
+}
+
+.carousel_page{
+    height: 100%;
+    @include flex;
+    background-color: $animation_color;
+    position: relative;
+}
+.carosual-btn{
+    margin-top: 2rem;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skip-div{
+    font-size: 1.1rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    >a{
+        color: $purple;
+    }
+}
+
+/*a href alreay have an user*/
+.AlreadyUser{
+    color: gray;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.div-already-user{
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.log-in-span{
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+}

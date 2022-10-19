@@ -1,0 +1,6 @@
+.grid-col{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    width: 80%;
+    height: 3rem;
+}

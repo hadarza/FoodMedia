@@ -1,0 +1,178 @@
+@import '../abstracts/mixins';
+@import '../abstracts/variables';
+
+
+.prev{
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+}
+
+
+/*section enter phone number*/
+.title-register , .subTitle-register{
+    text-align: center;
+}
+.title-register {
+    >h2{
+        font-weight: 700;
+        margin-bottom: 0.2rem !important;
+    }
+}
+.subTitle-register{
+    color: $circle_gray;
+    >h4{
+        font-weight: 300;
+        margin-bottom: 1rem !important;
+    }
+}
+
+.progress-div{
+    @include flex-col;
+    position: relative;
+}
+
+.progress{
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    width: 50vw;
+    height: 0.8rem;
+    border-radius: 30px;
+    background-color: $gray;
+    
+    >.progress-color{
+        text-align: left;
+        border-radius: 20px;
+        height: 70%;
+        width: 25%;
+        margin: 0.1rem;
+        background-color:$purple;
+    }
+}
+
+.step-progress{
+    color:$purple;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+input{
+    border-radius: 8px !important;
+    border: none;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+
+/*section enter code*/
+.smsCode {
+    text-align: center;
+    line-height: 80px;
+    border: solid 1px #ccc;
+    height: 3rem;
+    width: 3rem;
+    outline: none;
+    font-size: 2.5rem;
+    border-radius: 50% !important;
+}
+.code-text{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    height: 4rem;
+    padding-top: 1.2rem;
+}
+.wrong-code{
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/*button*/
+.btn-register{
+    margin-top: 2rem;
+    @include flex;
+    position: relative;
+}
+
+/*Password Section*/
+
+.password-div{
+    width: 100%;
+    margin-top: 1.4rem;
+    position: relative;
+    @include flex;
+}
+.Password{
+    border: none;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    height: 2.7rem;
+    width: 100%;
+    caret-color : $purple;
+    &:focus{
+        outline: none;
+
+    }
+}
+
+.rectangle-string-password{
+    height: 0.4rem;
+    opacity: 0.7;
+    background-color: $gray_password_valid;
+    border-radius: 30px;
+    margin: 1.5rem 0.5rem 0rem 0.5rem;
+
+}
+ul{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    padding: 0;
+    >li{
+        font-size: 1rem;
+        color: $dark_font;
+    }
+}
+.colored{
+    background-color: $purple !important;
+}
+.eye-svg{
+    position: absolute;
+    right: 0.3rem;
+    top: 0;
+    height: 100%;
+}
+
+/*Profile settings*/
+.Profile-btn{
+    width: 9rem;
+    height: 9rem;
+    @include flex-around-col;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 1rem;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.button-img{
+    height: 60%;
+    >img{
+        height: 100%;
+    }
+}
+
+.selectProfile{
+    outline: 1px solid black;
+}
+.circle-next{
+    position: absolute;
+    right: 1rem;
+    border-radius: 50%;
+    background-color: #553c66;
+    padding: 0.1rem;
+    >svg>path{
+        stroke: rgb(255,255,255) !important;
+    }
+}
