@@ -9,7 +9,7 @@ import CardRestaruant from './CardRestaruant/CardRestaruant';
 const Infinite = () => {
     let items = {}
     let requestCache = {}
-    
+    console.log("xx")
 
 const Row = ({ index, style }) => {
     const item = items[index];
