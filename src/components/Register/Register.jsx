@@ -1,12 +1,22 @@
-import React,{useRef,useState} from 'react'
-import PhoneInput from 'react-phone-input-2'
+import React,{useRef,useState,lazy,Suspense} from 'react'
 import 'react-phone-input-2/lib/style.css'
-import SectionCode from './SectionCode/SectionCode'
-import SectionPassword from './SectionPassword/SectionPassword'
-import SectionPhone from './SectionPhone/SectionPhone'
-import SectionProfile from './SectionProfile/SectionProfile'
 import {GrFormPrevious} from 'react-icons/gr'
+
 const Register = ({setAuth}) => {
+
+  const SectionPhone = lazy(()=>{
+    import('./SectionPhone/SectionPhone')
+  })
+  const SectionProfile = lazy(()=>{
+    import('./SectionProfile/SectionProfile')
+  })
+  const SectionCode = lazy(()=>{
+    import('./SectionCode/SectionCode')
+  })
+  const SectionPassword = lazy(()=>{
+    import('./SectionPassword/SectionPassword')
+  })
+  
     const refProgressBar = useRef(null)
     const [currentStep, setcurrentStep] = useState(1)
 
@@ -33,11 +43,12 @@ const Register = ({setAuth}) => {
             <div className='step-progress'>Step {currentStep}/4</div>
         </div>
         
-    {currentStep == 1 &&< SectionPhone refProgressBar={refProgressBar} currentStep={currentStep} setcurrentStep={setcurrentStep} />}
+        <Suspense fallback={<p id="loading">Loading...</p>}>
+    {currentStep == 1 && <SectionPhone refProgressBar={refProgressBar} currentStep={currentStep} setcurrentStep={setcurrentStep} />}
     {currentStep == 2 && <SectionCode refProgressBar={refProgressBar} currentStep={currentStep} setcurrentStep={setcurrentStep}/>}
     {currentStep == 3 && <SectionPassword next={next}/>}
     {currentStep == 4 && <SectionProfile setAuth={setAuth}/>}
-    {/* SectionPhone refProgressBar={refProgressBar} currentStep={currentStep} setcurrentStep={setcurrentStep} */}
+    </Suspense>
         
     </div>
   )

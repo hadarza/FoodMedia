@@ -15,7 +15,7 @@ const CardRestaruant = ({item,img}) => {
         <h2>{item.name} | {sliceAddress}..</h2>
         <h4>{item.info}</h4>
         
-        <div className='only-flex'>
+        <div className='only-flex dash-border-top'>
             <div className='flex p-2'>
                 <div className='m-r-2'>
                     <BiCycling/>

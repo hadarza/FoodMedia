@@ -1,15 +1,28 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect, lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route , Navigate } from "react-router-dom";
-import LoadingPage from "./components/LoadingPage/LoadingPage";
-import Home from './components/Home/Home';
-import CarouselLoading from './components/carouselLoading/CarouselLoading';
 import {Info} from './components/carouselLoading/JSON/Info';
 import './scss/app.scss'
-import Register from "./components/Register/Register";
-import Login from "./components/Login/Login";
 import { axiosInstance } from "../config";
-const App = () => {
 
+const App = () => {
+const LoadingPage = lazy(() =>
+  import("./components/LoadingPage/LoadingPage")
+);
+
+const Home = lazy(() =>
+  import("./components/Home/Home")
+);
+
+const CarouselLoading = lazy(() =>
+  import("./components/carouselLoading/CarouselLoading")
+);
+
+const Register = lazy(() =>
+  import("./components/Register/Register")
+);
+const Login = lazy(() =>
+  import("./components/Login/Login")
+);
   const [isAuthenticated,setisAuthenticated] = useState(false)
 
 
@@ -33,15 +46,16 @@ const App = () => {
   }
   return (
     <BrowserRouter>
+      <Suspense fallback={<div>Load</div>}>
       <Routes>
         <Route path="/" element={<LoadingPage/>} />
         <Route path="/adver" element={<CarouselLoading obj={Info}/>}/>
+        
         <Route path="/store"  element={
         isAuthenticated ? 
         <Home/> :
-        (
-          <Navigate to="/Login" replace/>
-        )} />
+        (<Navigate to="/Login" replace/>)} />
+
         <Route path="/Register" element={
           !isAuthenticated ? 
             <Register setAuth={setAuth}/> :(
@@ -52,8 +66,8 @@ const App = () => {
             <Login setAuth={setAuth}/> :(
               <Navigate to="/store" replace/>
             )} />
-
-      </Routes>
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 };

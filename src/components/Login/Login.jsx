@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import ButtonNextStep from '../Register/ButtonNextStep/ButtonNextStep'
 import PhoneInputSms from '../Register/SectionPhone/PhoneInputSms'
 import { useNavigate } from 'react-router-dom'
@@ -7,6 +7,7 @@ import InfoSectionLogin from './InfoSectionLogin'
 import { getPhoneNumber } from '../../Redux/features/Phone/PhoneNum'
 import { useSelector } from 'react-redux'
 import { axiosInstance } from '../../../config';
+import 'react-phone-input-2/lib/style.css'
 
 const Login = ({setAuth}) => {
     const navigate = useNavigate()

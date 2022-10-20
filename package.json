@@ -1,8 +1,9 @@
 {
   "homepage": "./",
-  "sideEffects": [ 
-      "**/*.css",
-    "**/*.scss"],
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss"
+  ],
   "name": "reactwithoutnpx",
   "version": "1.0.0",
   "description": "",
@@ -18,6 +19,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@loadable/component": "^5.15.2",
     "@material-ui/core": "^4.12.4",
     "@mui/icons-material": "^5.10.9",
     "@mui/lab": "^5.0.0-alpha.103",

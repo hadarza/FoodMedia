@@ -18,15 +18,13 @@ const Row = ({ index, style }) => {
     useEffect(() => {
       if(item != undefined){
           var RestaruantImage = item.restaruntImage;
-          console.log(RestaruantImage)
         axiosInstance.post('/api/dashboard/RestaruantImage',{RestaruantImage})
         .then(response => response.data)
         .then(data =>{
-          console.log("data "+ data[0].filenameimage)
           setImage(data[0].filenameimage)
         })
       }
-    })
+    },[item])
 
     return(
     <div style={style}>
@@ -57,7 +55,6 @@ const loadMoreItems = (visibleStartIndex,visibleStopIndex)=>{
     requestCache[key] = key;
      return;
   }
-  // let tag = 'burger'
    return axiosInstance.post('/api/dashboard/Restaurant',{tag})
    .then(response => response.data)
     .then(data => {
