@@ -1,5 +1,8 @@
 {
   "homepage": "./",
+  "sideEffects": [ 
+      "**/*.css",
+    "**/*.scss"],
   "name": "reactwithoutnpx",
   "version": "1.0.0",
   "description": "",

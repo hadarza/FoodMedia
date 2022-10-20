@@ -5,6 +5,7 @@ import React,{ useState,useEffect } from 'react';
 import ImageCarosuel from './ImageCarosuel/ImageCarosuel';
 import {useDispatch, useSelector} from 'react-redux'
 import {fetchImages,getImageHeader,getstatusFolders} from '../../../Redux/features/DashBoard/DashBoardDB'
+import SkeletonCarosuel from './SkeletonCarosuel/SkeletonCarosuel';
 let slidesToShow = 2;
 
 const carouselProperties = {
@@ -77,12 +78,15 @@ const CarosuelHome = () => {
 
   return (
       <div className='slider slider-header-store'>
+        {console.log(ListsFolders)}
+        {ListsFolders.length != 0 ?
         <Slider {...carouselProperties}>
               {ListsFolders.map((image,index)=>(
                 <ImageCarosuel key={index} img={image.filenameimage}/>
               ))}
 
-        </Slider>
+        </Slider>: <SkeletonCarosuel/>
+        }
         </div>
   )
 }

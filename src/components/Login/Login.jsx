@@ -31,9 +31,6 @@ const Login = ({setAuth}) => {
           console.log(error.message)
       }) 
     }
-    useEffect(() => {
-      console.log(TypeInput)
-    }, [TypeInput])
     
   return (
     <div>

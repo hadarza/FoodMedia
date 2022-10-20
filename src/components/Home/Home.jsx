@@ -2,7 +2,6 @@ import React,{useEffect} from 'react'
 import { axiosInstance } from '../../../config'
 import HeaderCategories from './HeaderCategories/HeaderCategories'
 import SearchBar from './SearchBar/SearchBar'
-
 import Location from './Location/Location';
 import CarosuelHome from './CarosuelHome/CarosuelHome';
 
@@ -29,7 +28,8 @@ useEffect(() => {
     <div className='app-height-100'>
       <Location/>
       <CarosuelHome/>
-     <HeaderCategories/> 
+     <HeaderCategories tag="burger"/> 
+     
    </div>
    
     )
