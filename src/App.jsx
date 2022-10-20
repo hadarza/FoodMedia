@@ -17,18 +17,15 @@ const App = () => {
       const res = await axiosInstance.post("/api/user/verify",null,{
         headers: { jwt_token: localStorage.token }})
         .then(res =>{
-          console.log(res)
-      const parseRes = res.data;
-      console.log(parseRes)
-      parseRes === true ? setisAuthenticated(true) : setisAuthenticated(false);
-    }).catch((err) =>{
-      console.error(err.message);
-    })
+        const parseRes = res.data;
+        parseRes === true ? setisAuthenticated(true) : setisAuthenticated(false);
+      }).catch((err) =>{
+        console.error(err.message);
+      })
   };
  
   useEffect(() => {
     checkAuthenticated();
-    console.log("check")
   }, []);
 
   const setAuth = (boolean)=>{
@@ -41,7 +38,7 @@ const App = () => {
         <Route path="/adver" element={<CarouselLoading obj={Info}/>}/>
         <Route path="/store"  element={
         isAuthenticated ? 
-        <Home setAuth={setAuth}/> :
+        <Home/> :
         (
           <Navigate to="/Login" replace/>
         )} />

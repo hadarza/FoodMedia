@@ -58,6 +58,9 @@ module.exports = {
     filename: "bundle.js",
   },
   mode: 'development',
+  optimization:{
+    usedExports: true,
+  },
   plugins: [
     new HtmlWebpackPlugin({ template: "./public/index.html"}),
   ],

@@ -5,11 +5,11 @@ import InfiniteLoader from 'react-window-infinite-loader'
 import 'react-virtualized/styles.css'; // only needs to be imported once
 import { axiosInstance } from '../../../../config';
 import CardRestaruant from './CardRestaruant/CardRestaruant';
+import SkeletonCategory from './SkeletonCategory/SkeletonCategory';
 
-const Infinite = () => {
+const HeaderCategories = ({tag}) => {
     let items = {}
     let requestCache = {}
-    console.log("xxy")
 
 const Row = ({ index, style }) => {
     const item = items[index];
@@ -30,9 +30,9 @@ const Row = ({ index, style }) => {
 
     return(
     <div style={style}>
-      {item ? 
+      {(item && image) ? 
       <CardRestaruant item={item} img={image}/>
-      : 'Loading'}
+      : <SkeletonCategory/>}
     </div>
     )
   };
@@ -57,7 +57,7 @@ const loadMoreItems = (visibleStartIndex,visibleStopIndex)=>{
     requestCache[key] = key;
      return;
   }
-  let tag = 'burger'
+  // let tag = 'burger'
    return axiosInstance.post('/api/dashboard/Restaurant',{tag})
    .then(response => response.data)
     .then(data => {
@@ -78,32 +78,35 @@ const loadMoreItems = (visibleStartIndex,visibleStopIndex)=>{
 }
 
   return (
+    <>
+    <h1>{tag}</h1>
+
  <div style={{display: "flex", flexGrow: 1, width: "100%", height:"13rem"}}>
     <AutoSizer>
       {({height,width})=>(
         <InfiniteLoader
         isItemLoaded={isItemLoaded}
         loadMoreItems={loadMoreItems}
-        itemCount={100}>
+        itemCount={4}>
       {({ onItemsRendered, ref }) => (
           <List
           direction='horizontal'
           className="List"
           height={height}
-          itemCount={100}
+          itemCount={4}
           itemSize={200}
           width={width}
           ref={ref}
-          onItemsRendered={onItemsRendered}
-          >
-          {Row}
+          onItemsRendered={onItemsRendered}>
+          {Row}   
           </List>
       )}  
       </InfiniteLoader>
       )}
     </AutoSizer> 
     </div>
+    </>
   )
 }
 
-export default Infinite
+export default HeaderCategories
