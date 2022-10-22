@@ -3,6 +3,8 @@ import { axiosInstance } from '../../../config'
 import HeaderCategories from './HeaderCategories/HeaderCategories'
 import Location from './Location/Location';
 import CarosuelHome from './CarosuelHome/CarosuelHome';
+import ScrollFixedPage from '../ScrollFixedPage/ScrollFixedPage';
+import Footer from '../Footer/Footer';
 
 const Home = ({setAuth}) => {
 
@@ -27,12 +29,12 @@ useEffect(() => {
     <div className='app-height-100'>
       <Location/>
       <CarosuelHome/>
-      {[1,2,3,4].map((object,key)=>(
-     <HeaderCategories tag="burger"/> 
+      {['burger','Ice Cream & Sweets','Pizza Time'].map((object,key)=>(
+     <HeaderCategories tag={object}/> 
 
       ))}
-
-
+      <ScrollFixedPage/>
+      <Footer/>
    </div>
    
     )

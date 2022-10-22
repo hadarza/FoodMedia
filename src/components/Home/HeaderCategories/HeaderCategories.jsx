@@ -58,7 +58,6 @@ const loadMoreItems = (visibleStartIndex,visibleStopIndex)=>{
    return axiosInstance.post('/api/dashboard/Restaurant',{tag})
    .then(response => response.data)
     .then(data => {
-      console.log(data)
      data.forEach((Restaurant, index) => {
        items[index + visibleStartIndex] = {
         name : Restaurant.restarunt,
@@ -68,7 +67,6 @@ const loadMoreItems = (visibleStartIndex,visibleStopIndex)=>{
         restaruntImage: Restaurant.restarunt_image,
         AddressRestaruant: Restaurant.addressrestaruant
        }
-       
      });
    })
    
@@ -76,9 +74,9 @@ const loadMoreItems = (visibleStartIndex,visibleStopIndex)=>{
 
   return (
     <>
-    <h1>{tag}</h1>
+    <h1 className='title-tag-restaruant'>{tag}</h1>
 
- <div style={{display: "flex", flexGrow: 1, width: "100%", height:"13rem"}}>
+ <div style={{display: "flex", flexGrow: 1, width: "100%", height:"15rem"}}>
     <AutoSizer>
       {({height,width})=>(
         <InfiniteLoader

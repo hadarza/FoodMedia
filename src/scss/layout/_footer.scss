@@ -1,0 +1,27 @@
+.footer{
+    background-color: rgba(48, 48, 45,0.7);
+    padding-bottom: 6rem;
+    padding-left: 1rem;
+    div>div>a,h2,div>div>p{
+        color: white;
+        padding: 0.5rem;
+        margin: 0;
+    }
+    >h2{
+        font-family: 'Assistant-Light';  
+    }
+}
+
+a{
+    color: black;
+}
+.footer-contact{
+    font-size: 2rem;
+    font-family: 'Assistant-Light';  
+}
+
+.div-info-contact{
+    height: 2rem;
+    display: flex;
+    align-items: center;
+}

@@ -18,10 +18,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(cors())
 
 //routes
-// app.use('/',(req,res)=>{
-//   res.send("Hello world")
-// })
 
+app.use('/public', express.static(__dirname + '/public' ));
 
 app.use('/api/Phone',Phone)
 app.use('/api/user',User)

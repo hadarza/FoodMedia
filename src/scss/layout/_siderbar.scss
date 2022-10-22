@@ -1,0 +1,24 @@
+@import '../abstracts/mixins';
+
+.fix-scroller-div{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 4rem;
+    @include flex;
+    background-color: white;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+        >.width-80{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+.title-sidebar{
+    margin: 0.1rem;
+    font-size: 0.8rem;
+    font-family: 'Assistant-Light';
+}
+.icon-select{
+    color: rgb(95, 188, 199);
+}

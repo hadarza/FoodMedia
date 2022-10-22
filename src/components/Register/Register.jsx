@@ -4,18 +4,18 @@ import {GrFormPrevious} from 'react-icons/gr'
 
 const Register = ({setAuth}) => {
 
-  const SectionPhone = lazy(()=>{
+  const SectionPhone = lazy(()=>
     import('./SectionPhone/SectionPhone')
-  })
-  const SectionProfile = lazy(()=>{
+  )
+  const SectionProfile = lazy(()=>
     import('./SectionProfile/SectionProfile')
-  })
-  const SectionCode = lazy(()=>{
+  )
+  const SectionCode = lazy(()=>
     import('./SectionCode/SectionCode')
-  })
-  const SectionPassword = lazy(()=>{
+  )
+  const SectionPassword = lazy(()=>
     import('./SectionPassword/SectionPassword')
-  })
+  )
   
     const refProgressBar = useRef(null)
     const [currentStep, setcurrentStep] = useState(1)
@@ -43,7 +43,7 @@ const Register = ({setAuth}) => {
             <div className='step-progress'>Step {currentStep}/4</div>
         </div>
         
-        <Suspense fallback={<p id="loading">Loading...</p>}>
+    <Suspense fallback={<p id="loading">Loading...</p>}>
     {currentStep == 1 && <SectionPhone refProgressBar={refProgressBar} currentStep={currentStep} setcurrentStep={setcurrentStep} />}
     {currentStep == 2 && <SectionCode refProgressBar={refProgressBar} currentStep={currentStep} setcurrentStep={setcurrentStep}/>}
     {currentStep == 3 && <SectionPassword next={next}/>}

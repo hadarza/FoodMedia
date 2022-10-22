@@ -87,9 +87,18 @@ INSERT INTO users (phone,passwordUser,isGluten,isVegan,isVegetarian,isNutAllergy
 INSERT INTO Restaruants (Restarunt,Info,Priceshipment,Timeshipment,tag) VALUES ('McDonlads', 'chips and cool drink','10','20-25','burger');
 INSERT INTO Restaruants (Restarunt,Info,Priceshipment,Timeshipment,tag,AddressRestaruant) VALUES ('Golda', 'Ice Cream, Drinks','15','20-30','burger','Ramat Gan');
 INSERT INTO Products(Price,ProductName,Quantity,Total,isGluten,isVegan,isVegetarian,isNutAllergy,isSeafood,isLowsugar,isKosher) VALUES (50.3,'Double Burger',2,100.6,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE);
-INSERT INTO Products(Price,ProductName,Quantity,Total,isGluten,isVegan,isVegetarian,isNutAllergy,isSeafood,isLowsugar,isKosher) VALUES (10.3,'Ice Cream',1,20.6,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE);
+INSERT INTO Products(Price,ProductName,Quantity,Total,isGluten,isVegan,isVegetarian,isNutAllergy,isSeafood,isLowsugar,isKosher) VALUES (18,'Choclate Ice Cream',1,20.6,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE);
 
 INSERT INTO Orders(creditCardID,OrderDate,TOTAL,StatusOrder,AddressUser) VALUES ('123685859858','12-12-2022',200.5,'DONE','Rival 14 Rishon Lezion');
+
+
+INSERT INTO Restaruants (Restarunt,Info,Priceshipment,Timeshipment,tag,AddressRestaruant) VALUES ('Yosef', 'Pizza, Kosher','15','30-40','Pizza Time','Givatayim');
+INSERT INTO Restaruants (Restarunt,Info,Priceshipment,Timeshipment,tag,AddressRestaruant) VALUES ('Haparlament', 'Grill, Kosher','19','30-40','Grill & BBQ','Tel Aviv');
+INSERT INTO Restaruants (Restarunt,Info,Priceshipment,Timeshipment,tag,AddressRestaruant) VALUES ('Max Brenner', 'Sweets,Ice Cream, Choclate, Kosher','15','20-35','Ice Cream & Sweets','Tel Aviv');
+INSERT INTO Restaruants (Restarunt,Info,Priceshipment,Timeshipment,tag,AddressRestaruant) VALUES ('Pizza Pergo', 'Pizza, Kosher','10','30-45','Pizza Time','Holon');
+INSERT INTO Restaruants (Restarunt,Info,Priceshipment,Timeshipment,tag,AddressRestaruant) VALUES ('Andre Ice Cream', 'Ice Creams, Frozen yogurt & Desserts','15','40-50','Ice Cream & Sweets','Rishon Lezion');
+
+
 
 
 INSERT INTO OrdersDetails(Quantity,Price,TOTAL) VALUES (5,20,100);
@@ -97,16 +106,24 @@ INSERT INTO OrdersDetails(Quantity,Price,TOTAL) VALUES (5,20,100);
 INSERT INTO OrdersDetails(orderId,Quantity,Price,TOTAL) VALUES (1,5,20,100);
 
 UPDATE Restaruants SET Restarunt_image = 1 WHERE Restarunt = 'McDonlads';
-UPDATE Restaruants SET Restarunt_image = 2 WHERE Restarunt = 'Burger King';
+UPDATE Restaruants SET Restarunt_image = 9 WHERE Restarunt = 'Burger King';
 UPDATE Restaruants SET Restarunt_image = 3 WHERE Restarunt = 'Golda';
 UPDATE Restaruants SET Restarunt_image = 4 WHERE Restarunt = 'McDonlads';
+UPDATE Restaruants SET Restarunt_image = 5 WHERE Restarunt = 'Haparlament';
+UPDATE Restaruants SET Restarunt_image = 6 WHERE Restarunt = 'Yosef';
+UPDATE Restaruants SET Restarunt_image = 7 WHERE Restarunt = 'Max Brenner';
+UPDATE Restaruants SET Restarunt_image = 8 WHERE Restarunt = 'Pizza Pergo';
+UPDATE Restaruants SET Restarunt_image = 10 WHERE Restarunt = 'Andre Ice Cream';
+
 
 UPDATE Restaruants SET AddressRestaruant = 'Rishon Lezion' WHERE id = 1;
 UPDATE Restaruants SET AddressRestaruant = 'Tel AViv' WHERE Restarunt = 'MacDonlads';
 UPDATE Restaruants SET AddressRestaruant = 'Rishon Lezion' WHERE Restarunt = 'McDonlads';
 
 
-UPDATE Products SET RestaruntProduct = 1 WHERE ProductName = 'Double Burger';
+UPDATE Products SET RestaruntProduct = 3 WHERE ProductName = 'Choclate Ice Cream';
+UPDATE Products SET RestaruntProduct = 3 WHERE ProductName = 'Vanilla Ice Cream';
+
 UPDATE Products SET RestaruntProduct = 1 WHERE ProductName = 'Ice Cream';
 
 UPDATE Orders SET IdUser = 1 WHERE orderId = 2;

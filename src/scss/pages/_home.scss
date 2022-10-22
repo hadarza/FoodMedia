@@ -5,6 +5,11 @@
     height: 100%;
     position: relative;
 }
+.title-tag-restaruant{
+    margin-left: 0.8rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Assistant-Regular'
+}
 .btn-location{
     width: 15rem;
     height: 4rem;
@@ -43,7 +48,6 @@
 }
 .mylocation{
     @include flex; 
-
 }
 .select{
     position: absolute;
@@ -74,11 +78,14 @@
 .slider-header-store{
     margin-bottom: 2rem;
 }
+/*card restaruant*/
 .card-Restaruant{
     border-radius: 5px;
     margin: 0.4rem;
     box-shadow: rgba(0,0,0,6%) 0px 0px 0.125rem 0px, rgba(0,0,0,12%) 0px 0.125rem 0.125rem 0px;
-    @include flex-col;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     >.card-img{
         >img{
             border-radius: 10px 10px 0 0;
