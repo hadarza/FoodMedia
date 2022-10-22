@@ -1,12 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import {BiCycling} from 'react-icons/bi'
 const CardRestaruant = ({item,img}) => {
-    console.log(item)
+  const navigate = useNavigate()
     const sliceAddress= item.AddressRestaruant.slice(0,5)
+    const RestaruantName = item.name.replace(/\s/g, "_");
   return (
     <>
     {item ?
-    <div className='flex'>
+    <div className='flex' onClick={()=>{navigate(`./menu/${RestaruantName}`)}}>
     <div className='card-Restaruant'>
       <div className='card-img'>
           <img src={`http://10.100.102.33:4000/api/dashboard/image/${img}`}/>
@@ -15,7 +17,7 @@ const CardRestaruant = ({item,img}) => {
         <h2>{item.name} | {sliceAddress}..</h2>
         <h4>{item.info}</h4>
         
-        <div className='only-flex'>
+        <div className='only-flex dash-border-top'>
             <div className='flex p-2'>
                 <div className='m-r-2'>
                     <BiCycling/>

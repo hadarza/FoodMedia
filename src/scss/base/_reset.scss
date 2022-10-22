@@ -4,17 +4,26 @@
 *{
     direction: ltr;
     font-family: 'Assistant-Bold';
+
 }
 body{
     margin: 0;
     height:100%  
 }
 html{
-  scroll-behavior : smooth;
   height: 100%;
   font-size: 16px;
-  
-} 
+}
+ 
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
 #root{
   height: 100%;
 }
@@ -77,6 +86,8 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance:textfield; /* Firefox */
 }
+
+
 
 .react-tel-input .form-control{
     border: none !important;

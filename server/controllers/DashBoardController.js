@@ -90,6 +90,23 @@ const getAllRestaurantsByTag = async(req,res)=>{
     }
 }
 
+const getIdByRestaurant = async(req,res)=>{
+  const restaruant = req.body.restaruant;
+
+  try{
+    const RestaruantsID = await pool.query("SELECT id FROM Restaruants WHERE restarunt = $1",[restaruant])
+      if (RestaruantsID.rows.length !== 0) {
+          res.status(200).send(RestaruantsID.rows)
+      }
+      }catch(err){
+      res.status(404).json({
+        success: false, 
+        message: 'not found', 
+        stack: err.stack,
+      })
+    }
+  }
+
 const getImageRestarunt = async(req,res)=>{
   const Restarunt_img = req.body.RestaruantImage;
   console.log(Restarunt_img)
@@ -107,12 +124,30 @@ const getImageRestarunt = async(req,res)=>{
     })
   }
 }
+
+const getProductsByRestaruants = async(req,res)=>{
+  const Restaruant = req.body.Restaruant;
+  try{
+    const Products = await pool.query("SELECT * FROM Products WHERE restaruntproduct = $1",[Restaruant])
+    if (Products.rows.length !== 0) {
+        res.status(200).send(Products.rows)
+    }
+    }catch(err){
+    res.status(404).json({
+      success: false, 
+      message: err.message, 
+      stack: err.stack,
+    })
+  }
+}
 module.exports = {
     getUser,
     getImageCarosuel,
     postImageCarosuel,
     getAllImageCarosuel,
     getAllRestaurantsByTag,
-    getImageRestarunt
+    getIdByRestaurant,
+    getImageRestarunt,
+    getProductsByRestaruants
 }
  

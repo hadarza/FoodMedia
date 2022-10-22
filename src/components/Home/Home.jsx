@@ -1,9 +1,10 @@
 import React,{useEffect} from 'react'
 import { axiosInstance } from '../../../config'
 import HeaderCategories from './HeaderCategories/HeaderCategories'
-import SearchBar from './SearchBar/SearchBar'
 import Location from './Location/Location';
 import CarosuelHome from './CarosuelHome/CarosuelHome';
+import ScrollFixedPage from '../ScrollFixedPage/ScrollFixedPage';
+import Footer from '../Footer/Footer';
 
 const Home = ({setAuth}) => {
 
@@ -28,8 +29,12 @@ useEffect(() => {
     <div className='app-height-100'>
       <Location/>
       <CarosuelHome/>
-     <HeaderCategories tag="burger"/> 
-     
+      {['burger','Ice Cream & Sweets','Pizza Time'].map((object,key)=>(
+     <HeaderCategories tag={object}/> 
+
+      ))}
+      <ScrollFixedPage/>
+      <Footer/>
    </div>
    
     )
