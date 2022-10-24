@@ -1,0 +1,49 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+.div-img-restaruant{
+    width: 100%;
+    >img{
+        width: 100%;
+    }
+}
+
+.circle-btn{
+    position: relative;
+    @include flex;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem;
+    >svg{
+        z-index: 3;
+    }
+}
+
+.circle-btn::before{
+    content:'';
+    position: absolute;
+    @include flex;
+    border-radius: 50%;
+    background-color: gray;
+    width: 2rem;
+    height: 2rem;
+}
+.buttons-div-restaruant{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 2.5rem;
+    position: fixed;
+    top: 0.5rem;
+    z-index: 2;
+}
+
+.title-restaruant{
+    opacity: 0;
+}
+
+.huge{
+    height: 1580rem;
+    width: 100%;
+}

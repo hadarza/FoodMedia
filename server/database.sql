@@ -36,7 +36,7 @@ ALTER TABLE Restaruants
 ADD AddressRestaruant VARCHAR(255);
 
 
-ALTER TABLE Restaruants
+ALTER TABLE Products
 DROP COLUMN Address;
 
 
@@ -44,8 +44,6 @@ CREATE TABLE Products(
     ProductId SERIAL PRIMARY KEY,
     ProductName VARCHAR(255) NOT NULL,
     Price SERIAL NOT NULL,
-    Quantity NUMERIC NOT NULL,
-    Total NUMERIC NOT NULL,
     isGluten BOOLEAN,
     isVegan BOOLEAN,
     isVegetarian BOOLEAN,
@@ -54,7 +52,9 @@ CREATE TABLE Products(
     isLowsugar BOOLEAN,
     isKosher BOOLEAN,
     RestaruntProduct int,
-    FOREIGN KEY (RestaruntProduct) REFERENCES Restaruants (id) ON DELETE CASCADE
+    FOREIGN KEY (RestaruntProduct) REFERENCES Restaruants (id) ON DELETE CASCADE,
+    ImageProduct int UNIQUE ,
+    CONSTRAINT idImage FOREIGN KEY (ImageProduct) REFERENCES imagefiles (id)
 ); 
 
 
@@ -87,7 +87,8 @@ INSERT INTO users (phone,passwordUser,isGluten,isVegan,isVegetarian,isNutAllergy
 INSERT INTO Restaruants (Restarunt,Info,Priceshipment,Timeshipment,tag) VALUES ('McDonlads', 'chips and cool drink','10','20-25','burger');
 INSERT INTO Restaruants (Restarunt,Info,Priceshipment,Timeshipment,tag,AddressRestaruant) VALUES ('Golda', 'Ice Cream, Drinks','15','20-30','burger','Ramat Gan');
 INSERT INTO Products(Price,ProductName,Quantity,Total,isGluten,isVegan,isVegetarian,isNutAllergy,isSeafood,isLowsugar,isKosher) VALUES (50.3,'Double Burger',2,100.6,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE);
-INSERT INTO Products(Price,ProductName,Quantity,Total,isGluten,isVegan,isVegetarian,isNutAllergy,isSeafood,isLowsugar,isKosher) VALUES (18,'Choclate Ice Cream',1,20.6,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE);
+INSERT INTO Products(Price,ProductName,isGluten,isVegan,isVegetarian,isNutAllergy,isSeafood,isLowsugar,isKosher) VALUES (18,'Choclate Ice Cream',FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE);
+INSERT INTO Products(Price,ProductName,isGluten,isVegan,isVegetarian,isNutAllergy,isSeafood,isLowsugar,isKosher) VALUES (1,'Vanilla Ice Cream',FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE);
 
 INSERT INTO Orders(creditCardID,OrderDate,TOTAL,StatusOrder,AddressUser) VALUES ('123685859858','12-12-2022',200.5,'DONE','Rival 14 Rishon Lezion');
 
@@ -123,6 +124,9 @@ UPDATE Restaruants SET AddressRestaruant = 'Rishon Lezion' WHERE Restarunt = 'Mc
 
 UPDATE Products SET RestaruntProduct = 3 WHERE ProductName = 'Choclate Ice Cream';
 UPDATE Products SET RestaruntProduct = 3 WHERE ProductName = 'Vanilla Ice Cream';
+
+UPDATE Products SET ImageProduct = 11 WHERE ProductName = 'Choclate Ice Cream';
+UPDATE Products SET ImageProduct = 12 WHERE ProductName = 'Vanilla Ice Cream';
 
 UPDATE Products SET RestaruntProduct = 1 WHERE ProductName = 'Ice Cream';
 

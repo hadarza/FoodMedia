@@ -6,7 +6,6 @@ import 'react-virtualized/styles.css'; // only needs to be imported once
 import { axiosInstance } from '../../../../config';
 import CardRestaruant from './CardRestaruant/CardRestaruant';
 import SkeletonCategory from './SkeletonCategory/SkeletonCategory';
-
 const HeaderCategories = ({tag}) => {
     let items = {}
     let requestCache = {}
@@ -14,6 +13,7 @@ const HeaderCategories = ({tag}) => {
 const Row = ({ index, style }) => {
     const item = items[index];
     const [image,setImage] = useState("")
+    // const {isLoading,data,isError,error} = useAll(RestaruantName,onSuccess,onError)
 
     useEffect(() => {
       if(item != undefined){

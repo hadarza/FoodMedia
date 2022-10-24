@@ -10,13 +10,12 @@ const ProfileDiv = ({setting,dispatch}) => {
       event.currentTarget.classList.add("selectProfile")
       dispatch({type: setting.title, payload: true})
     }
-    console.log(setting.title)
   }
 
   return (
     <div className='Profile-btn' onClick={(event)=>{toggleSelect(event)}}>
       <div className='button-img'>
-        <img src={setting.img}/>
+        <img alt="settings" src={setting.img}/>
       </div>
       <div className='button-text'>
           {setting.title}
