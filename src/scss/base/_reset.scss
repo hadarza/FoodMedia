@@ -3,7 +3,7 @@
 
 *{
     direction: ltr;
-    font-family: 'Assistant-Bold';
+    font-family: 'Assistant-Regular';
 
 }
 body{
@@ -87,8 +87,6 @@ input[type=number] {
     -moz-appearance:textfield; /* Firefox */
 }
 
-
-
 .react-tel-input .form-control{
     border: none !important;
 }
@@ -113,4 +111,9 @@ input[type=number] {
 }
 .search{
     justify-content: left !important;
+}
+
+.Toastify__close-button{
+width: 2rem;
+height: 1.5rem;
 }
