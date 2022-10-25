@@ -1,15 +1,15 @@
 import {useQuery} from 'react-query'
 import { axiosInstance } from '../../config'
 
-const fetchRestaruantImage = ({queryKey})=>{
+const fetchImage = ({queryKey})=>{
     const id = queryKey[1]
-    return axiosInstance.post('/api/dashboard/RestaruantImage',{RestaruantImage: id})
+    return axiosInstance.post('/api/dashboard/GetImage',{id: id})
 }
-export const useRestaruantImgByIdData = (id,onSuccess,onError)=>{
+export const useImgByIdData = (id,onSuccess,onError)=>{
 
     return useQuery(
     ['ImageRestaruant',id],
-    fetchRestaruantImage,
+    fetchImage,
         {
             // cacheTime:5000, //5 sec. Default is 5 min
             staleTime: 30000, //default is 0

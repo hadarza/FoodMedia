@@ -24,13 +24,24 @@
     align-items: center;
     justify-content: space-around;
 }
+@mixin flex-justify-col{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 
 @mixin flex-between-row{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+@mixin flex-evently-col{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-evenly;
+    flex-direction: column;
 
+}
 @mixin circle-svg{
     border-radius: 50%;
     width: 2.7rem;

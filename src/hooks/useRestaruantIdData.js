@@ -3,7 +3,7 @@ import { axiosInstance } from '../../config'
 
 const fetchRestaruantid = ({queryKey})=>{
     const restaruantName = queryKey[1]
-    return axiosInstance.post('/api/dashboard/GetIdRestaurant',{restaruant: restaruantName})
+    return axiosInstance.post('/api/dashboard/GetInfoRestaurant',{restaruant: restaruantName})
 }
 export const useRestaruantIdData = (RestaruantName,onSuccess,onError)=>{
 
@@ -16,7 +16,18 @@ export const useRestaruantIdData = (RestaruantName,onSuccess,onError)=>{
             onSuccess,
             onError,
             select: (data)=>{
-                return data.data[0].id
+                return data?.data.map((restaruant)=>(
+                    {
+                    id: restaruant.id,
+                    name : restaruant.restarunt,
+                    info : restaruant.info,
+                    priceshipment: restaruant.priceshipment,
+                    timeshipment: restaruant.timeshipment,
+                    tag: restaruant.tag,
+                    addressrestaruant: restaruant.addressrestaruant,
+                    rate: restaruant.rate
+                    }
+                ))
             }
         }
     )

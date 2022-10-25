@@ -66,12 +66,12 @@ const Menu = lazy(()=>
             !isAuthenticated ? 
               <Register setAuth={setAuth}/> :(
                 <Navigate to="/store" replace/>
-              )} />
+              )}/>
           <Route path="/Login" element={ 
             !isAuthenticated ? 
               <Login setAuth={setAuth}/> :(
                 <Navigate to="/store" replace/>
-              )} />
+              )}/>
           <Route path="/store/menu/:restaruant" element={<Menu/>} />
           </Routes>
         </Suspense>

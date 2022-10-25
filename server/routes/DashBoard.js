@@ -27,8 +27,8 @@ router.get('/image/:filename',DashBoardController.getImageCarosuel)
 router.get('/allImages',DashBoardController.getAllImageCarosuel)
 router.post('/image', imageUpload.single('image'),DashBoardController.postImageCarosuel)
 router.post('/Restaurant',DashBoardController.getAllRestaurantsByTag)
-router.post('/RestaruantImage',DashBoardController.getImageRestarunt)
-router.post('/GetIdRestaurant',DashBoardController.getIdByRestaurant)
+router.post('/GetImage',DashBoardController.getImage)
+router.post('/GetInfoRestaurant',DashBoardController.getInfoRestaurant)
 router.post('/GetProductsByRestaruants',DashBoardController.getProductsByRestaruants)
 
 module.exports = router;

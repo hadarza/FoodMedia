@@ -18,7 +18,7 @@ const Row = ({ index, style }) => {
     useEffect(() => {
       if(item != undefined){
           var RestaruantImage = item.restaruntImage;
-        axiosInstance.post('/api/dashboard/RestaruantImage',{RestaruantImage})
+        axiosInstance.post('/api/dashboard/GetImage',{id: RestaruantImage})
         .then(response => response.data)
         .then(data =>{
           setImage(data[0].filenameimage)

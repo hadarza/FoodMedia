@@ -47,3 +47,11 @@
     height: 1580rem;
     width: 100%;
 }
+.background-black-menu{
+    background-color: black;
+}
+.infoexplantion{
+    width: 95%;
+    height: 6rem;
+    @include flex-justify-col;
+}

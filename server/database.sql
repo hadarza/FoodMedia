@@ -29,11 +29,12 @@ CREATE TABLE Restaruants(
     tag VARCHAR(255) NOT NULL,
     Restarunt_image int UNIQUE ,
     CONSTRAINT idImage FOREIGN KEY (Restarunt_image) REFERENCES imagefiles (id),
-    AddressRestaruant VARCHAR(255)
+    AddressRestaruant VARCHAR(255),
+    Rate VARCHAR(255)
 );
 
 ALTER TABLE Restaruants
-ADD AddressRestaruant VARCHAR(255);
+ADD Rate VARCHAR(255);
 
 
 ALTER TABLE Products
@@ -105,6 +106,9 @@ INSERT INTO Restaruants (Restarunt,Info,Priceshipment,Timeshipment,tag,AddressRe
 INSERT INTO OrdersDetails(Quantity,Price,TOTAL) VALUES (5,20,100);
 
 INSERT INTO OrdersDetails(orderId,Quantity,Price,TOTAL) VALUES (1,5,20,100);
+
+
+UPDATE Restaruants SET RATE = 7.9 WHERE Restarunt = 'Golda';
 
 UPDATE Restaruants SET Restarunt_image = 1 WHERE Restarunt = 'McDonlads';
 UPDATE Restaruants SET Restarunt_image = 9 WHERE Restarunt = 'Burger King';

@@ -90,11 +90,11 @@ const getAllRestaurantsByTag = async(req,res)=>{
     }
 }
 
-const getIdByRestaurant = async(req,res)=>{
+const getInfoRestaurant = async(req,res)=>{
   const restaruant = req.body.restaruant;
 
   try{
-    const RestaruantsID = await pool.query("SELECT id FROM Restaruants WHERE restarunt = $1",[restaruant])
+    const RestaruantsID = await pool.query("SELECT * FROM Restaruants WHERE restarunt = $1",[restaruant])
       if (RestaruantsID.rows.length !== 0) {
           res.status(200).send(RestaruantsID.rows)
       }
@@ -107,14 +107,13 @@ const getIdByRestaurant = async(req,res)=>{
     }
   }
 
-const getImageRestarunt = async(req,res)=>{
-  const Restarunt_img = req.body.RestaruantImage;
-  console.log(Restarunt_img)
+const getImage = async(req,res)=>{
+  const id = req.body.id;
   try{
-    const imageRestarunt = await pool.query("SELECT * FROM imagefiles WHERE id = $1",[Restarunt_img])
-    if (imageRestarunt.rows.length !== 0) {
-        console.log(imageRestarunt.rows)
-        res.status(200).send(imageRestarunt.rows)
+    const image = await pool.query("SELECT * FROM imagefiles WHERE id = $1",[id])
+    if (image.rows.length !== 0) {
+        console.log(image.rows)
+        res.status(200).send(image.rows)
     }
     }catch(err){
     res.status(404).json({
@@ -146,8 +145,8 @@ module.exports = {
     postImageCarosuel,
     getAllImageCarosuel,
     getAllRestaurantsByTag,
-    getIdByRestaurant,
-    getImageRestarunt,
+    getInfoRestaurant,
+    getImage,
     getProductsByRestaruants
 }
  
