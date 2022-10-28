@@ -90,6 +90,11 @@ INSERT INTO Restaruants (Restarunt,Info,Priceshipment,Timeshipment,tag,AddressRe
 INSERT INTO Products(Price,ProductName,Quantity,Total,isGluten,isVegan,isVegetarian,isNutAllergy,isSeafood,isLowsugar,isKosher) VALUES (50.3,'Double Burger',2,100.6,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE);
 INSERT INTO Products(Price,ProductName,isGluten,isVegan,isVegetarian,isNutAllergy,isSeafood,isLowsugar,isKosher) VALUES (18,'Choclate Ice Cream',FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE);
 INSERT INTO Products(Price,ProductName,isGluten,isVegan,isVegetarian,isNutAllergy,isSeafood,isLowsugar,isKosher) VALUES (1,'Vanilla Ice Cream',FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE);
+INSERT INTO Products(Price,ProductName,isGluten,isVegan,isVegetarian,isNutAllergy,isSeafood,isLowsugar,isKosher) VALUES (16,'Mango Ice Cream',FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE);
+INSERT INTO Products(Price,ProductName,isGluten,isVegan,isVegetarian,isNutAllergy,isSeafood,isLowsugar,isKosher) VALUES (15,'strawberry Ice Cream',FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE);
+INSERT INTO Products(Price,ProductName,isGluten,isVegan,isVegetarian,isNutAllergy,isSeafood,isLowsugar,isKosher) VALUES (15,'strawberry Ice Cream',FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE);
+INSERT INTO Products(Price,ProductName,isGluten,isVegan,isVegetarian,isNutAllergy,isSeafood,isLowsugar,isKosher) VALUES (17,'Choclate Chips Ice Cream',FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE);
+INSERT INTO Products(Price,ProductName,isGluten,isVegan,isVegetarian,isNutAllergy,isSeafood,isLowsugar,isKosher) VALUES (17,'Carmal Ice Cream',FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE);
 
 INSERT INTO Orders(creditCardID,OrderDate,TOTAL,StatusOrder,AddressUser) VALUES ('123685859858','12-12-2022',200.5,'DONE','Rival 14 Rishon Lezion');
 
@@ -128,9 +133,18 @@ UPDATE Restaruants SET AddressRestaruant = 'Rishon Lezion' WHERE Restarunt = 'Mc
 
 UPDATE Products SET RestaruntProduct = 3 WHERE ProductName = 'Choclate Ice Cream';
 UPDATE Products SET RestaruntProduct = 3 WHERE ProductName = 'Vanilla Ice Cream';
+UPDATE Products SET RestaruntProduct = 3 WHERE ProductName = 'Mango Ice Cream';
+UPDATE Products SET RestaruntProduct = 3 WHERE ProductName = 'strawberry Ice Cream';
+UPDATE Products SET RestaruntProduct = 3 WHERE ProductName = 'Choclate Chips Ice Cream';
+UPDATE Products SET RestaruntProduct = 3 WHERE ProductName = 'Carmal Ice Cream';
+
 
 UPDATE Products SET ImageProduct = 11 WHERE ProductName = 'Choclate Ice Cream';
 UPDATE Products SET ImageProduct = 12 WHERE ProductName = 'Vanilla Ice Cream';
+UPDATE Products SET ImageProduct = 13 WHERE ProductName = 'Mango Ice Cream';
+UPDATE Products SET ImageProduct = 14 WHERE ProductName = 'strawberry Ice Cream';
+UPDATE Products SET ImageProduct = 15 WHERE ProductName = 'Choclate Chips Ice Cream';
+UPDATE Products SET ImageProduct = 16 WHERE ProductName = 'Carmal Ice Cream';
 
 UPDATE Products SET RestaruntProduct = 1 WHERE ProductName = 'Ice Cream';
 

@@ -1,0 +1,23 @@
+{
+    "products":[
+        {
+            "id":"1234567",
+            "name":"try",
+            "price":10,
+            "stock":2
+        },
+        {
+            "id":"12345678",
+            "name":"try2",
+            "price":10,
+            "stock":2
+        },
+        {
+            "id":"12345679",
+            "name":"try2",
+            "price":10,
+            "stock":2
+        }
+
+    ]
+}
