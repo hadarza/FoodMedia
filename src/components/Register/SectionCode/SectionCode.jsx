@@ -15,7 +15,6 @@ const SectionCode =  ({refProgressBar,currentStep,setcurrentStep}) => {
   function Verify(){
     axiosInstance.post("/api/Phone/Verify",{Phone,code})
     .then(res => { 
-        console.log(res.data)
         if(currentStep < 4 && res.data.valid == true){
          refWrongCode.current.classList.add("visibility-hide")
           setcurrentStep(currentStep + 1);
@@ -31,7 +30,6 @@ const SectionCode =  ({refProgressBar,currentStep,setcurrentStep}) => {
   function resend(){
     axiosInstance.post("/api/Phone/Message",{Phone})
     .then(res => { 
-        console.log(res.data)
         if(currentStep < 4 ){
           setcurrentStep(currentStep + 1);
           refProgressBar.current.style.width = (25 * (currentStep+1)) + '%';

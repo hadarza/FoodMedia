@@ -4,7 +4,6 @@ import { axiosInstance } from '../../config'
 
 const fetchRestaruantsData = ({queryKey})=>{
     const id = queryKey[1]
-    console.log(id)
     return axiosInstance.post('/api/dashboard/GetProductsByRestaruants',{Restaruant: id})
 }
 export const useAllRestaruantsData = (id,onSuccess,onError,isEnabled)=>{
@@ -14,10 +13,10 @@ export const useAllRestaruantsData = (id,onSuccess,onError,isEnabled)=>{
         fetchRestaruantsData,
         {
             // cacheTime:5000, //5 sec. Default is 5 min
-            staleTime: 30000, //default is 0
             onSuccess,
             onError,
             enabled: isEnabled,
+            refetchOnWindowFocus: 'always',
             select: (data)=>{
                 return data?.data.map((Restaurant)=>(
                     {

@@ -1,11 +1,11 @@
-const crypto = require('crypto-js');
+var { nanoid } = require("nanoid");
 
 module.exports = (req, res, next) => {
-    if (req.session && req.session.cartId) {
-        return next();
+    if (req.session.cartId) {
+        next()
     }
-
-    req.session.cartId = crypto.randomBytes(16).toString('hex');
-
-    return next();
+else{
+    req.session.cartId = nanoid(64)
+    next()
+}
 };

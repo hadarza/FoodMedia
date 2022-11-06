@@ -18,7 +18,6 @@ const ParentProfileDiv = () => {
   const [ValSettings, dispatch] = useReducer(reducer, Settings);
     useEffect(() => {
       dispatchSetting(setSetting(ValSettings))
-      console.log(ValSettings)
     }, [ValSettings])
 
   function reducer(state, action) {

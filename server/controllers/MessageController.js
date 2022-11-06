@@ -6,7 +6,6 @@ const SendMessage = async (req,res)=>{
     .create({to: `+${req.body.Phone}`, channel: 'sms'})
     .then(verification => console.log(verification.status))
     .catch(e => {
-    console.log(e)
     res.status(500).send(e);
     });
 res.sendStatus(200);
@@ -18,11 +17,8 @@ const VerifyCode = async (req,res)=>{
     .verificationChecks
     .create({to: `+${req.body.Phone}`, code: req.body.code})
     .catch(e => {
-      console.log(e)
-      console.log(req.body.code)
       res.status(500).send(e);
     });
-  console.log(req.body.code)
   res.status(200).send(check);
 }
       

@@ -50,7 +50,6 @@ const CarosuelHome = () => {
   const statusFolders = useSelector(getstatusFolders)
 
   useEffect(() => {
-    console.log(statusFolders)
     if(statusFolders == "idle"){
       dispatch(fetchImages())
     }
@@ -78,7 +77,6 @@ const CarosuelHome = () => {
 
   return (
       <div className='slider slider-header-store'>
-        {console.log(ListsFolders)}
         {ListsFolders.length != 0 ?
         <Slider {...carouselProperties}>
               {ListsFolders.map((image,index)=>(

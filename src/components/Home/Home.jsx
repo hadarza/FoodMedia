@@ -30,8 +30,7 @@ useEffect(() => {
       <Location/>
       <CarosuelHome/>
       {['burger','Ice Cream & Sweets','Pizza Time'].map((object,key)=>(
-     <HeaderCategories tag={object}/> 
-
+        <HeaderCategories tag={object}/> 
       ))}
       <ScrollFixedPage/>
       <Footer/>

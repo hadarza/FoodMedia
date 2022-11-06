@@ -23,7 +23,6 @@ const postImageCarosuel = async (req,res)=>{
   try{
     const user = await pool.query("INSERT INTO imagefiles (fileNameImage,filepath,mimetype,size) VALUES($1,$2,$3,$4) RETURNING *",
     [filename,filepath,mimetype,size]);
-    console.log(req.file);
     res.json({ success: true, filename })
   }catch(err){
     res.json({ success: false, message: 'upload failed', stack: err.stack })
@@ -33,19 +32,15 @@ const postImageCarosuel = async (req,res)=>{
 const getImageCarosuel = async(req,res)=>{
   const { filename } = req.params;
   try{
-  const image = await pool.query("SELECT * FROM imagefiles WHERE fileNameImage=$1",[filename])
-  console.log(image.rows[0])
+  console.log(filename)
+  const image = await pool.query("SELECT * FROM imagefiles WHERE filenameimage=$1",[filename])
     if (image.rows.length !== 0) {
     const dirname = path.resolve();
     const fullfilepath = path.join(dirname, image.rows[0].filepath);
     return res.type(image.rows[0].mimetype)
     .sendFile(fullfilepath);
     }
-    return Promise.reject(
-
-        new Error('Image does not exist')      
-
-    );
+    return Promise.reject(new Error('Image does not exist'));
     }catch(err){
     res.status(404).json({
       success: false, 
@@ -59,7 +54,6 @@ const getAllImageCarosuel = async(req,res)=>{
   try{
   const image = await pool.query("SELECT * FROM imagefiles")
     if (image.rows.length !== 0) {
-        console.log(image.rows)
         res.status(200).send(image.rows)
     }
     }catch(err){
@@ -112,7 +106,6 @@ const getImage = async(req,res)=>{
   try{
     const image = await pool.query("SELECT * FROM imagefiles WHERE id = $1",[id])
     if (image.rows.length !== 0) {
-        console.log(image.rows)
         res.status(200).send(image.rows)
     }
     }catch(err){

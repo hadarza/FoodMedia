@@ -4,7 +4,7 @@ const ImageCarosuel = ({img}) => {
     <div className='flex'>
     <div className='card-carosuel'>
         <div className='carosuel-img'>
-            <img src={`http://10.100.102.33:4000/api/dashboard/image/${img}`}/>
+            <img src={`http://192.168.15.226:4000/api/dashboard/image/${img}`}/>
         </div>
 
         <div className='carosuel-info'>

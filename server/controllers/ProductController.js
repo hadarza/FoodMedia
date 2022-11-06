@@ -1,24 +1,21 @@
-let {products} = require('../../products.json')
+let {products} = require('../products.json')
+const { StatusCodes } = require('http-status-codes');
 
 const ProductList = async (req,res)=>{
   const redisClient = req.app.get('redisClient');  
-  await redisClient.connect()
   const productKeys = await redisClient.scanIterator("product:*")
       const productList = [];
       if (productKeys.length) {
           for (const key of productKeys) {
               const product = await redisClient.json.get(key);
-  
               productList.push(JSON.parse(product));
           }
-  
           return res.send(productList);
       }
   
       for (const product of products) {
         try{
           const { id } = product;
-          console.log(product)
           await redisClient.json.set(`product:${id}`, '.', JSON.stringify(product));
           productList.push(product);
         }
@@ -27,8 +24,24 @@ const ProductList = async (req,res)=>{
         }
       }
   
-      return res.send("xx");
+      return res.send(productList);
     }  
 
-module.exports = { ProductList };
+const ResetProductController = async (req, res) =>{
+  const redisClient = req.app.get('redisClient');  
+  const cartKeys = await redisClient.scanIterator('cart:*');
+
+  for (const key of cartKeys) {
+    await redisClient.del(key);
+  }
+
+  for (const product of products) {
+    const { id } = product;
+    await redisClient.json.set(`product:${id}`, '.', JSON.stringify(product));
+  }
+
+      return res.sendStatus(StatusCodes.OK);
+  }
+
+module.exports = { ProductList,ResetProductController };
 

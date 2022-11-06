@@ -23,7 +23,6 @@ const SectionPhone = ({refProgressBar,currentStep,setcurrentStep}) => {
     function sendCode(){
       axiosInstance.post("/api/Phone/Message",{Phone})
       .then(res => { 
-          console.log(res.data)
           if(currentStep < 4 ){
             setcurrentStep(currentStep + 1);
             refProgressBar.current.style.width = (25 * (currentStep+1)) + '%';

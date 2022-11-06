@@ -8,7 +8,8 @@ import { motion,useScroll } from "framer-motion";
 import CardProduct from './CardProduct/CardProduct';
 import HeaderMenu from './HeaderMenu/HeaderMenu';
 import AdditionalInfo from './AdditionalInfo/AdditionalInfo';
-
+import ScrollFixedPage from '../ScrollFixedPage/ScrollFixedPage';
+import {axiosInstance} from '../../../config'
 
 const Menu = () => {
   const ref = useRef(null);
@@ -42,26 +43,27 @@ const Menu = () => {
 
       background.onChange((value) => setVal(value));
       name.onChange((value)=>{setValText(value)})
+
+      const DeleteAll =()=>{
+        console.log("delte!!!!")
+        axiosInstance.delete('api/ShoppingCart/1234567',{withCredentials: true})
+      }
       return (
-    <div>
-        {/* <ToastContainer /> */}
-        {/* {loadingDataID && <h2>Loading..</h2>} */}
-        {/* {IdisError && <h2>{IdError.message}</h2>} */}
-       
-       <div>
+        <>
         <div className='div-img-restaruant only-flex'>
           <motion.img
             ref={ref}
             style ={{
               filter: `brightness(${val})`}}
-            src={`http://10.100.102.33:4000/api/dashboard/image/${RestaruantImage}`}/>
+            src={`http://192.168.15.226:4000/api/dashboard/image/${RestaruantImage}`}/>
           <HeaderMenu
           valText={valText} val={val}/>
         </div>
 
       <div className='background-black-menu'>
+      <button className="addCart" onClick={DeleteAll}>delete all</button>
         <AdditionalInfo RestaruantName={RestaruantName} RestaruantIdData={RestaruantIdData}/>
-          <div className='huge'>
+          <div className='list-items'>
             {RestaruantProducts &&
               RestaruantProducts.map((product,index)=>(
                 <CardProduct key={index} product={product}/>
@@ -69,8 +71,8 @@ const Menu = () => {
             }
           </div>
         </div>
-       </div>
-    </div>
+        <ScrollFixedPage/>
+      </>
   )
 }
 

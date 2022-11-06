@@ -15,7 +15,6 @@ const CodeDiv = () => {
     const [Opt, setOpt] = useState(0)
     useEffect(() => {
         const sum = CalcOpt(1,1000)
-        console.log(String(sum).padStart(4, '0'))
         setOpt(String(sum).padStart(4, '0'))
         dispatchRedux(setCode(Opt))
 

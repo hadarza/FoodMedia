@@ -73,6 +73,8 @@ const Menu = lazy(()=>
                 <Navigate to="/store" replace/>
               )}/>
           <Route path="/store/menu/:restaruant" element={<Menu/>} />
+          {/* <Route path="*" element={<NotFound />} /> */}
+
           </Routes>
         </Suspense>
       </Router>

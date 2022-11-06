@@ -2,7 +2,6 @@ const router = require('express').Router();
 const DashBoardController = require('../controllers/DashBoardController')
 const authorization = require('../middleware/authorization')
 const multer = require('multer');
-const { Dashboard } = require('@mui/icons-material');
 
 // Create multer object
 const imageUpload = multer({

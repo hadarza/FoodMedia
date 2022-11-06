@@ -4,13 +4,8 @@ const jwtGenerator = require('../utils/jwtGenerator');
 const { RegisterValidation, LoginValidation } = require("../middleware/validation");
 const Register = async(req,res)=>{
   try{
-    console.log("err")
     const {error} = RegisterValidation(req.body.User);
-    console.log(error)
-
     if(error) return res.status(400).send(error.details[0].message)
-    console.log("err")
-
 
     const {phone,isGluten,isVegan,isVegetarian,isNutAllergy,isSeafood,isLowsugar,isKosher} = req.body.User;
     // check if you already have a user with this phone

@@ -1,4 +1,5 @@
 @import '../abstracts/variables';
+@import '../abstracts/mixins';
 button{
     height: 3.2rem;
     border:none;
@@ -34,4 +35,9 @@ button{
     height: 0.5rem;
     border-radius: 10px;
     background-color: $gray_pop_up;
+}
+.addCart{
+    width: 9rem;
+    height: 2.6rem;
+    @include flex;
 }

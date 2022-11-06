@@ -23,8 +23,6 @@ const Login = ({setAuth}) => {
       }
       axiosInstance.post("/api/user/Login",{User})
       .then(res => { 
-          console.log(res.data)
-
           localStorage.setItem("token",res.data.tokenMessage)
           setAuth(true)
           navigate('/store')

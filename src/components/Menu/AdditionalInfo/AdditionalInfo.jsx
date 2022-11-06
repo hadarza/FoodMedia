@@ -2,19 +2,15 @@ import React,{useRef,useState} from 'react'
 import {IoMdBicycle} from 'react-icons/io'
 import {HiOutlineEmojiSad,HiOutlineEmojiHappy} from 'react-icons/hi'
 import {ImHappy} from 'react-icons/im'
-import {motion, useScroll } from "framer-motion";
-
+import { motion,useScroll } from "framer-motion";
+import HeaderDisappearScroller from './HeaderDisappearScroller'
 const AdditionalInfo = ({RestaruantName,RestaruantIdData}) => {
-    const [HeaderVal,setHeaderVal] = useState(0)
     const Headerref = useRef(null)
 
-    const { scrollYProgress: header } = useScroll({
+    const { scrollYProgress } = useScroll({
         target: Headerref,
-        offset: ["end end", "start start"]
+        offset: ["end start", "start start"]
     });
-
-
-      header.onChange((value)=>{setHeaderVal(value)})
 
 
     const Iconrate = (rate) =>{
@@ -30,39 +26,40 @@ const AdditionalInfo = ({RestaruantName,RestaruantIdData}) => {
     }
     if(RestaruantIdData)
         var rate = Iconrate(Object.values(RestaruantIdData)[0].rate)
-        console.log(rate)
   return (
-    <div className='restaruant-info-section'>
-    {RestaruantIdData &&
-    <div className='width-100'>
+     <div className='restaruant-info-section'>
+     {RestaruantIdData &&
+     <div className='width-100' ref={Headerref}>
         <div className='width-100 flex'>
             <div className='infoexplantion'>
-                <motion.h1 className='restaruant-name'
-                style={{opacity: HeaderVal}}>{RestaruantName} | {Object.values(RestaruantIdData)[0].addressrestaruant }</motion.h1>
+            <HeaderDisappearScroller RestaruantName={RestaruantName} addressrestaruant ={Object.values(RestaruantIdData)[0].addressrestaruant }/>
                 <p className='explantion'>{Object.values(RestaruantIdData)[0].info}</p>  
             </div>
         </div>
+
     
 
-     <div className='additiona-info'>     
+      <div className='additiona-info'>     
      <div className='iconinforestaruant'>
         <IoMdBicycle/>
         <p>Delievery in {Object.values(RestaruantIdData)[0].timeshipment} min</p>
-     </div>
+     </div> 
 
-     <div className='iconinforestaruant'>
+      <div className='iconinforestaruant'>
         {rate == "sad" && <HiOutlineEmojiSad/>}
         {rate == "ok" && <CiFaceMeh/>}
         {rate == "good" && <HiOutlineEmojiHappy/>}
         {rate == "best" && <ImHappy/>}
         <p>{Object.values(RestaruantIdData)[0].rate}</p>
-      </div>
+      </div> 
+      </div> 
+
+
      </div>
 
-    </div>
+      }
+     </div>
 
-     }
-    </div>
     )
 }
 

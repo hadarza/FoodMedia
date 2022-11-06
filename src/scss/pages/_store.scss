@@ -43,15 +43,30 @@
     opacity: 0;
 }
 
-.huge{
-    height: 1580rem;
+.list-items{
     width: 100%;
+    padding-bottom: 5rem;
 }
 .background-black-menu{
     background-color: black;
 }
 .infoexplantion{
-    width: 95%;
+    width: 100%;
     height: 6rem;
     @include flex-justify-col;
+}
+
+.restaruant-navbar-name{
+    background: $circle_gray;
+    opacity: 0;
+    position: fixed;
+    top: 0px;
+    width: 100vw;
+    height: 3rem;
+    @include flex;
+    >h1{
+        font-size: 1.5rem;
+        color: white;
+    }
+
 }
