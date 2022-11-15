@@ -1,2 +1,2 @@
 # FoodMedia
-FoodMedia APP using React &amp; Node &amp; PostgreSQL. Redis - Cache
+FoodMedia APP using React &amp; Node &amp; PostgreSQL and using Redis as a Cache
