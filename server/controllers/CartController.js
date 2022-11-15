@@ -92,7 +92,7 @@ const UpdateController = async (req,res)=>{
         }
         // update stock both on cart hash and productInStore object
         await redisClient.hSet(`cart:${cartId15}`, `product:${productId}`, quantity);
-        console.log("get here")
+        console.log("get here222")
         productInStore.stock = newStock;
         await redisClient.json.set(`product:${productId}`, '.', JSON.stringify(productInStore));
     }
