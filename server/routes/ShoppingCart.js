@@ -6,5 +6,4 @@ router.get('/',checkSession,CartController.CartList)
 router.put('/:id',checkSession,CartController.UpdateController)
 router.delete('/:id',checkSession,CartController.DeleteItemController)
 router.delete('/',checkSession,CartController.EmptyCartController)
-
 module.exports = router;

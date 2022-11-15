@@ -17,40 +17,35 @@ const CartList = async (req,res)=>{
 }  
 
 const DeleteItemController = async (req,res)=>{
-    
 
-    const { cartId } = req.session;
+    const { cartId15 } = req.session;
     const {id:productId} = req.params;
     const redisClient = req.app.get('redisClient');  
+    console.log(cartId15)
+    var quantityInCart  = await redisClient.hGet("cart:"+ cartId15, "product:"+productId);
+    quantityInCart = parseInt(quantityInCart)
+    if(quantityInCart > 0){
+        await redisClient.hDel(`cart:${cartId15}`,`product:${productId}`)
+        let productInStore = redisClient.json.get(`product:${productId}`);
+        productInStore = JSON.parse(productInStore)
+        productInStore.stock +=quantityInCart;
+        await redisClient.json.set(`product:${productId}`, '.', JSON.stringify(productInStore));
+        return res.sendStatus(StatusCodes.OK);
+    }
+    // return res.sendStatus(StatusCodes.OK);
+    res.send(req.session.cartId15)
 
-    var quantityInCart  = await redisClient.HGET("cart:3FiGAHDYncxEmyup1I5UmklIgWZAWrVG8rf-XCCYpOflRN9YR8uWfztEbD2W5dGZ", "product:12345678");
-    console.log(quantityInCart)
-    // quantityInCart = parseInt(quantityInCart)
-    // console.log(`cart:${cartId}`)
-    // console.log(`product:${productId}`)
-    // if(quantityInCart > 0){
-    //     await redisClient.hDel(`cart:${cartId}`, `product:${productId}`)
-    //     let productInStore = redisClient.json.get(`product:${productId}`);
-    //     productInStore = JSON.parse(productInStore)
-    //     productInStore.stock +=quantityInCart;
-
-    //     await redisClient.json.set(`product:${productId}`, '.', JSON.stringify(productInStore));
-    //     return res.sendStatus(StatusCodes.OK);
-
-    // }
-    return res.sendStatus(StatusCodes.OK);
 }
 
 const EmptyCartController = async (req,res)=>{
     const redisClient = req.app.get('redisClient');  
-    const { cartId } = req.session;
-    console.log(req.session.cartId)
-
-    const cartList = await redisClient.hGetAll(`cart:${cartId}`);
+    const { cartId15 } = req.session;
+    console.log(req.session.id)
+    const cartList = await redisClient.hGetAll(`cart:${cartId15}`);
     if (!cartList) return res.sendStatus(StatusCodes.NO_CONTENT);
 
     for (const key of Object.keys(cartList)) {
-        await redisClient.hDel(`cart:${cartId}`, key);
+        await redisClient.hDel(`cart:${cartId15}`, key);
 
         let productInStore = await redisClient.json.get(key);
 
@@ -64,81 +59,73 @@ const EmptyCartController = async (req,res)=>{
 
 
 const UpdateController = async (req,res)=>{
-    console.log(req.session.cartId)
-
     const redisClient = req.app.get('redisClient');  
     const {
-        session: { cartId },
+        session: { cartId15 },
         params: { id: productId }
     } = req;
-
-    // req.session.save()
-    // let { quantity, incrementBy } = req.body.params;
-    quantity = 1;
+    quantity = 1; // new quantity send the current state on client
     incrementBy = 1;
-    console.log(req.params.id)
     let productInStore = await redisClient.json.get(`product:${productId}`)
-    console.log(productInStore)
     if (!productInStore) return res.status(StatusCodes.NOT_FOUND).send({ 
         message: "Product with this id doesn't exist" 
     });
-    let quantityInCart =  await redisClient.hget(`cart:${cartId}`, `product:${productId}`,function (err, reply) {
-        console.log("reply2 : "+productId + " "+ cartId)
-        quantityInCart =  parseInt(reply)
-        return quantityInCart;
-     });
-    // 
-    // productInStore = JSON.parse(productInStore)
-    // const { stock } = productInStore;
+    let quantityInCart =  await redisClient.hget(`cart:${cartId15}`, `product:${productId}`) || 0;
+    if(quantityInCart == 0 ) incrementBy = 0; // if product don't exist on cart - we update to one
+    productInStore = JSON.parse(productInStore)
+    const { stock } = productInStore; //  how much in store
+    console.log(stock)
 
-    // if (quantity != null) {
-    //     quantity = parseInt(quantity);
-    //     if (quantity <= 0) {
-    //         return res.status(StatusCodes.BAD_REQUEST).send({ 
-    //             message: 'Quantity should be greater than 0' 
-    //         });
-    //     }
+    if (quantity != null) {
+        quantity = parseInt(quantity);
+        if (quantity <= 0) {
+            return res.status(StatusCodes.BAD_REQUEST).send({ 
+                message: 'Quantity should be greater than 0' 
+            });
+        }
+        const newStock = stock - (quantity - quantityInCart);
+        console.log(newStock)
+        if (newStock < 0) {
+            return res.status(StatusCodes.BAD_REQUEST).send({
+                message: 'Not enough products in stock' 
+            });
+        }
+        // update stock both on cart hash and productInStore object
+        await redisClient.hSet(`cart:${cartId15}`, `product:${productId}`, quantity);
+        console.log("get here")
+        productInStore.stock = newStock;
+        await redisClient.json.set(`product:${productId}`, '.', JSON.stringify(productInStore));
+    }
 
-    //     const newStock = stock - (quantity - quantityInCart);
-    //     if (newStock < 0) {
-    //         return res.status(StatusCodes.BAD_REQUEST).send({
-    //             message: 'Not enough products in stock' 
-    //         });
-    //     }
-    //     // update stock both on cart hash and productInStore object
-    //     console.log(quantity)
-    //     await redisClient.hSet(`cart:${cartId}`, `product:${productId}`, 1);
-    //     productInStore.stock = newStock;
-    //     await redisClient.json.set(`product:${productId}`, '.', JSON.stringify(productInStore));
-    // }
+    if (incrementBy != 0) {
+        incrementBy = parseInt(incrementBy);
+        if (incrementBy !== 1 && incrementBy !== -1) {
+            return res.status(StatusCodes.BAD_REQUEST).send({ message: 'Value of incrementBy should be 1 or -1' });
+        }
 
-    // if (incrementBy != null) {
-    //     incrementBy = parseInt(incrementBy);
-    //     if (incrementBy !== 1 && incrementBy !== -1) {
-    //         return res.status(StatusCodes.BAD_REQUEST).send({ message: 'Value of incrementBy should be 1 or -1' });
-    //     }
+        const quantityAfterIncrement = quantityInCart + incrementBy;
+        if (quantityAfterIncrement <= 0) {
+            return res.status(StatusCodes.BAD_REQUEST).send({ 
+                message: "Can't decrement stock to 0" 
+            });
+        }
 
-    //     const quantityAfterIncrement = quantityInCart + incrementBy;
-    //     if (quantityAfterIncrement <= 0) {
-    //         return res.status(StatusCodes.BAD_REQUEST).send({ 
-    //             message: "Can't decrement stock to 0" 
-    //         });
-    //     }
-
-    //     if (stock - incrementBy < 0) {
-    //         return res.status(StatusCodes.BAD_REQUEST).send({ 
-    //             message: 'Not enough products in stock' 
-    //         });
-    //     }
+        if (stock - incrementBy < 0) {
+            return res.status(StatusCodes.BAD_REQUEST).send({ 
+                message: 'Not enough products in stock' 
+            });
+        }
     //     //update stock in redisStore
-    //     await redisClient.hIncrBy(`cart:${cartId}`, `product:${productId}`, incrementBy);
-    //     productInStore.stock -= incrementBy;
-    //     await redisClient.json.set(`product:${productId}`, '.', JSON.stringify(productInStore));
-    //     console.log("done")
-    // }
+        await redisClient.hIncrBy(`cart:${cartId15}`, `product:${productId}`, incrementBy);
+        productInStore.stock -= incrementBy;
+        await redisClient.json.set(`product:${productId}`, '.', JSON.stringify(productInStore));
+        console.log("done")
+    }
+    res.send(req.session.cartId15)
 
-    return res.sendStatus(StatusCodes.OK);
+    // return res.sendStatus(StatusCodes.OK);
 }
+
 
 module.exports = { CartList,EmptyCartController,DeleteItemController ,UpdateController};
 

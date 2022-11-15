@@ -72,6 +72,7 @@ var cors = require('cors');
 const dotenv = require('dotenv')
 dotenv.config()
 const connectRedis = require('connect-redis');
+const CheckSession = require('./middleware/CheckSession')
 
 const RedisStore = connectRedis(session)
 
@@ -87,7 +88,7 @@ client.connect()
 // middleware
 app.use(express.json()) // access to request.body
 app.use(express.urlencoded({extended: true}));
-app.use(cors({credentials: true}))
+app.use(cors({credentials:true}))
 
 app.use(session({
     store: new RedisStore({ client: client }),
@@ -100,7 +101,16 @@ app.use('/api/Product',Product)
 app.use('/api/Phone',Phone)
 app.use('/api/user',User)
 app.use('/api/dashboard',DashBoard)
+// app.put('/api/shopping/12345',CheckSession,(req,res)=>{
+//   console.log(req.session.cartId8)
+//   // req.session.save()
+//   res.send(req.session.cartId8)
+// })
+// app.delete('/api/shopping/123456',CheckSession,(req,res)=>{
+//   console.log(req.session.cartId8)
+//   res.send(req.session.cartId8)
 
+// })
 app.listen(port, () => {
   console.log(`app listening on port ${port}`)
 })

@@ -30,7 +30,6 @@ export const useAllRestaruantsData = (id,onSuccess,onError,isEnabled)=>{
                     islowsugar: Restaurant.islowsugar,
                     iskosher : Restaurant.iskosher,
                     idImage: Restaurant.imageproduct,
-
                     }
 
                 ))

@@ -32,7 +32,6 @@ const postImageCarosuel = async (req,res)=>{
 const getImageCarosuel = async(req,res)=>{
   const { filename } = req.params;
   try{
-  console.log(filename)
   const image = await pool.query("SELECT * FROM imagefiles WHERE filenameimage=$1",[filename])
     if (image.rows.length !== 0) {
     const dirname = path.resolve();

@@ -13,16 +13,8 @@ const CardProduct = ({product}) => {
     }
 
     const AddToCart = ()=>{
-        axiosInstance.put('api/ShoppingCart/1234567',
-        // { 
-            // params: {
-            //     quantity: 1,
-            //     incrementBy : 1
-            // }}),
-            {
-                withCredentials: true,
-            })
-        }
+        axiosInstance.put('api/ShoppingCart/12345678',{withCredentials: true})
+    }
 
     const { data: ProductImage , isError: ImageIsError , error: ImageError } = useImgByIdData(product != undefined ? product.idImage : "",onSuccess,onError)
 
@@ -51,7 +43,7 @@ const CardProduct = ({product}) => {
         </div>
 
         <div className='product-div-image'>
-            <img className='product-img' alt="product" src={`http://192.168.15.226:4000/api/dashboard/image/${ProductImage}`}/>
+            <img className='product-img' alt="product" src={`http://192.168.113.226:4000/api/dashboard/image/${ProductImage}`}/>
         </div>
     </div>
   )

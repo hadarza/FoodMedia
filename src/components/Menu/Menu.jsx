@@ -44,9 +44,9 @@ const Menu = () => {
       background.onChange((value) => setVal(value));
       name.onChange((value)=>{setValText(value)})
 
-      const DeleteAll =()=>{
-        console.log("delte!!!!")
-        axiosInstance.delete('api/ShoppingCart/1234567',{withCredentials: true})
+      const DeleteAll = () =>{
+        console.log("xx")
+        axiosInstance.delete('api/ShoppingCart/12345678',{withCredentials: true})
       }
       return (
         <>
@@ -55,7 +55,7 @@ const Menu = () => {
             ref={ref}
             style ={{
               filter: `brightness(${val})`}}
-            src={`http://192.168.15.226:4000/api/dashboard/image/${RestaruantImage}`}/>
+            src={`http://192.168.113.226:4000/api/dashboard/image/${RestaruantImage}`}/>
           <HeaderMenu
           valText={valText} val={val}/>
         </div>
