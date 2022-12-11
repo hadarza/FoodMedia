@@ -1,22 +1,25 @@
 {
     "products":[
         {
-            "id":"1234567",
-            "name":"try",
+            "id":"1",
+            "name":"Vanilla-Ice-Cream",
+            "restarunt":"Golda",
             "price":10,
-            "stock":2
+            "stock":10
         },
         {
-            "id":"12345678",
-            "name":"try2",
+            "id":"2",
+            "name":"Choclate-Ice-Cream",
+            "restarunt":"Golda",
             "price":10,
             "stock":8
         },
         {
-            "id":"12345679",
-            "name":"try2",
+            "id":"3",
+            "name":"strawberry-Ice-Cream",
+            "restarunt":"Golda",
             "price":10,
-            "stock":2
+            "stock":10
         }
 
     ]

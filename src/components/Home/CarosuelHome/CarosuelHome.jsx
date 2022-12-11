@@ -1,7 +1,7 @@
+import React,{ useState,useEffect,Suspense } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import React,{ useState,useEffect } from 'react';
 import ImageCarosuel from './ImageCarosuel/ImageCarosuel';
 import {useDispatch, useSelector} from 'react-redux'
 import {fetchImages,getImageHeader,getstatusFolders} from '../../../Redux/features/DashBoard/DashBoardDB'
@@ -76,16 +76,18 @@ const CarosuelHome = () => {
 
 
   return (
+    <Suspense fallback={<SkeletonCarosuel/>}>
       <div className='slider slider-header-store'>
-        {ListsFolders.length != 0 ?
+        {ListsFolders.length != 0 &&
         <Slider {...carouselProperties}>
               {ListsFolders.map((image,index)=>(
                 <ImageCarosuel key={index} img={image.filenameimage}/>
               ))}
 
-        </Slider>: <SkeletonCarosuel/>
+        </Slider>
         }
-        </div>
+      </div>
+    </Suspense>
   )
 }
 export default CarosuelHome

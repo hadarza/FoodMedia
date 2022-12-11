@@ -124,11 +124,12 @@ UPDATE Restaruants SET Restarunt_image = 6 WHERE Restarunt = 'Yosef';
 UPDATE Restaruants SET Restarunt_image = 7 WHERE Restarunt = 'Max Brenner';
 UPDATE Restaruants SET Restarunt_image = 8 WHERE Restarunt = 'Pizza Pergo';
 UPDATE Restaruants SET Restarunt_image = 10 WHERE Restarunt = 'Andre Ice Cream';
+UPDATE Restaruants SET Restarunt_image = 10 WHERE Restarunt = 'Andre Ice Cream';
 
 
 UPDATE Restaruants SET AddressRestaruant = 'Rishon Lezion' WHERE id = 1;
 UPDATE Restaruants SET AddressRestaruant = 'Tel AViv' WHERE Restarunt = 'MacDonlads';
-UPDATE Restaruants SET AddressRestaruant = 'Rishon Lezion' WHERE Restarunt = 'McDonlads';
+UPDATE Restaruants SET Info = 'Ice Creams, yogurts & Desserts' WHERE Restarunt = 'Andre Ice Cream';
 
 
 UPDATE Products SET RestaruntProduct = 3 WHERE ProductName = 'Choclate Ice Cream';

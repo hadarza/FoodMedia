@@ -32,14 +32,15 @@ const postImageCarosuel = async (req,res)=>{
 const getImageCarosuel = async(req,res)=>{
   const { filename } = req.params;
   try{
-  const image = await pool.query("SELECT * FROM imagefiles WHERE filenameimage=$1",[filename])
+  const image = await pool.query("SELECT * FROM imagefiles WHERE filenameimage = $1",[filename])
     if (image.rows.length !== 0) {
     const dirname = path.resolve();
     const fullfilepath = path.join(dirname, image.rows[0].filepath);
     return res.type(image.rows[0].mimetype)
     .sendFile(fullfilepath);
+    }else{
+      return Promise.reject(new Error('Image does not exist'));
     }
-    return Promise.reject(new Error('Image does not exist'));
     }catch(err){
     res.status(404).json({
       success: false, 

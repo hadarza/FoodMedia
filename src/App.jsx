@@ -5,6 +5,7 @@ import './scss/app.scss'
 import { axiosInstance } from "../config";
 import {QueryClientProvider,QueryClient} from 'react-query'
 import {ReactQueryDevtools} from 'react-query/devtools'
+import SkeletonCategory from "./components/Home/HeaderCategories/SkeletonCategory/SkeletonCategory";
 const App = () => {
   const LoadingPage = lazy(() =>
   import("./components/LoadingPage/LoadingPage")
@@ -57,10 +58,10 @@ const Menu = lazy(()=>
           <Route path="/" element={<LoadingPage/>} />
           <Route path="/adver" element={<CarouselLoading obj={Info}/>}/>
           
-          <Route exact path="/store"  element={
+          <Route exact path="/store" element={
           isAuthenticated ? 
-          <Home/> :
-          (<Navigate to="/Login" replace/>)} />
+            <Home/>
+          :(<Navigate to="/Login" replace/>)} />
 
           <Route path="/Register" element={
             !isAuthenticated ? 
@@ -72,7 +73,9 @@ const Menu = lazy(()=>
               <Login setAuth={setAuth}/> :(
                 <Navigate to="/store" replace/>
               )}/>
-          <Route path="/store/menu/:restaruant" element={<Menu/>} />
+          <Route path="/store/menu/:restaruant" element={
+              <Menu/>
+          } />
           {/* <Route path="*" element={<NotFound />} /> */}
 
           </Routes>

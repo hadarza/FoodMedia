@@ -11,7 +11,7 @@ const CardRestaruant = ({item,img}) => {
     <div className='flex' onClick={()=>{navigate(`./menu/${RestaruantName}`)}}>
     <div className='card-Restaruant'>
       <div className='card-img'>
-          <img alt="card-restaruant-img" src={`http://192.168.113.226:4000/api/dashboard/image/${img}`}/>
+          <img alt="card-restaruant-img" src={`http://192.168.19.226:4000/api/dashboard/image/${img}`}/>
       </div>
       <div className='card-info'>
         <h2>{item.name} | {sliceAddress}..</h2>
@@ -28,7 +28,7 @@ const CardRestaruant = ({item,img}) => {
       </div>
       </div>
     </div>
-    : <div>Loading</div>
+    : <div>ZZZ</div>
     }
     </>
       )

@@ -1,8 +1,8 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { axiosInstance } from '../../../../config'
 import {images} from '../../../constants/index'
 import {useImgByIdData} from '../../../hooks/useImgByIdData'
-const CardProduct = ({product}) => {
+const CardProduct = ({product,quantity,setQuantity}) => {
 
     const onSuccess = (data) => {
         console.log(data)  
@@ -13,7 +13,10 @@ const CardProduct = ({product}) => {
     }
 
     const AddToCart = ()=>{
-        axiosInstance.put('api/ShoppingCart/12345678',{withCredentials: true})
+        setQuantity(quantity + 1)
+        var nameProduct = (product.name).replaceAll(" ","-");
+        console.log(nameProduct)
+        axiosInstance.put(`api/ShoppingCart/${nameProduct}`,{quantity: quantity+1, incrementBy:1},{withCredentials: true})
     }
 
     const { data: ProductImage , isError: ImageIsError , error: ImageError } = useImgByIdData(product != undefined ? product.idImage : "",onSuccess,onError)
@@ -22,7 +25,6 @@ const CardProduct = ({product}) => {
     <div className='flex-around-row product-card'>
         <div className='title-product'>
             <div className='info-product'>
-                {console.log(product)}
                 <h3>{product.name}</h3>
                 <div className='flex-align'>
                     <h4>{product.price} ₪</h4>
@@ -43,7 +45,7 @@ const CardProduct = ({product}) => {
         </div>
 
         <div className='product-div-image'>
-            <img className='product-img' alt="product" src={`http://192.168.113.226:4000/api/dashboard/image/${ProductImage}`}/>
+            <img className='product-img' alt="product" src={`http://192.168.19.226:4000/api/dashboard/image/${ProductImage}`}/>
         </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import React, {useState,useEffect, useCallback } from 'react'
+import React, {useState,useEffect,Suspense } from 'react'
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from 'react-virtualized-auto-sizer'
 import InfiniteLoader from 'react-window-infinite-loader'
@@ -28,9 +28,11 @@ const Row = ({ index, style }) => {
 
     return(
     <div style={style}>
-      {(item && image) ? 
-      <CardRestaruant item={item} img={image}/>
-      : <SkeletonCategory/>}
+      <Suspense fallback={<SkeletonCategory/>}>
+        {(item && image) &&
+          <CardRestaruant item={item} img={image}/>
+        }
+      </Suspense>
     </div>
     )
   };

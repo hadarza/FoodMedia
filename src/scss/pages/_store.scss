@@ -52,21 +52,55 @@
 }
 .infoexplantion{
     width: 100%;
-    height: 6rem;
+    height: 8rem;
     @include flex-justify-col;
 }
 
 .restaruant-navbar-name{
-    background: $circle_gray;
+    background: $header;
     opacity: 0;
     position: fixed;
     top: 0px;
     width: 100vw;
-    height: 3rem;
+    height: 4rem;
     @include flex;
     >h1{
         font-size: 1.5rem;
         color: white;
     }
 
+}
+/*pop up cart info*/
+.popup-cartInfo{
+    width: 100vw;
+    height: 3.8rem;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    bottom: 0.5rem;
+}
+.background-cartInfo{
+    background-color: $purple;
+    width: 93%;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.view-order,.money-cart{
+    font-size: 1.3rem;
+}
+.circle-count{
+    width: 2.5rem;
+    height: 2.5rem;
+    @include flex;
+    background-color: black;
+    border-radius: 50%;
+    margin: 0.4rem;
+    >span{
+        color: $purple;
+        font-size: 1.5rem;
+    }
 }

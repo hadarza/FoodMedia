@@ -35,7 +35,7 @@
 .allergy-product{
     display: flex;
     .circle-allergy{
-        margin: 0.3rem;
+        margin: 0.5rem;
         border-radius: 50%;
         background-color: white;
         @include flex;
@@ -54,6 +54,7 @@
     font-size: 2.5rem;
     color: white;
     opacity: 1;
+    margin-left: 0.5rem;
 }
 
 .iconinforestaruant{
@@ -70,7 +71,8 @@
     border-bottom: 1px solid rgba(54, 49, 49, 0.3);
 }
 .explantion{
+    margin-left: 0.5rem;
     color: white;
-    margin: 0;
+    margin-left: 1rem;
 }
 
