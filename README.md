@@ -19,7 +19,6 @@ If you already have an account - skip level 1 to 4 and just login by typing your
 
 <img src="https://user-images.githubusercontent.com/48456834/222844495-cc2cf36d-9740-4c24-bdb4-2533f23c7a8a.jpg" width="20%" height="20%"/>
 
-***
 
 4. Let us know you better! make it easier for you looking for your desired food. If you're eating only Kosher food, you're vegan / vegetarian etc. 
 We'll make sure you see only the food you can eat.
