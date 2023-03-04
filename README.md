@@ -1,5 +1,5 @@
 # FoodMediaApp 
-Welcome to my project! This is a FoodMedia App made in React and NodeJs + PostgreSQL. It allows users to quickly and easily order food from any restaurant. With this App, users can easily order food by their preferences such as Kosher food,. I hope you enjoy!
+Welcome to my project! This is a FoodMedia App made in React and NodeJs + PostgreSQL. My project allows users to quickly and easily order food from any restaurant. With this App, users can easily order food by their preferences such as Kosher food. I hope you enjoy!
 
 
 At First, the user register to our app by his phone and we send him an SMS to verify him.
