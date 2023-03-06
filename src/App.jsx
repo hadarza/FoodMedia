@@ -5,12 +5,9 @@ import './scss/app.scss'
 import { axiosInstance } from "../config";
 import {QueryClientProvider,QueryClient} from 'react-query'
 import {ReactQueryDevtools} from 'react-query/devtools'
-import SkeletonCategory from "./components/Home/HeaderCategories/SkeletonCategory/SkeletonCategory";
+import LoadingPage from './components/LoadingPage/LoadingPage'
 const App = () => {
-  const LoadingPage = lazy(() =>
-  import("./components/LoadingPage/LoadingPage")
-  );
-  
+
   const Home = lazy(() =>
   import("./components/Home/Home")
   );
@@ -35,16 +32,17 @@ const Menu = lazy(()=>
   const checkAuthenticated = async () => {
       const res = await axiosInstance.post("/api/user/verify",null,{
         headers: { jwt_token: localStorage.token }})
-        .then(res =>{
+        .then((res) =>{
+          console.log("data "+res.data)
         const parseRes = res.data;
-        parseRes === true ? setisAuthenticated(true) : setisAuthenticated(false);
+        parseRes == true ? setisAuthenticated(true) : setisAuthenticated(false);
       }).catch((err) =>{
         console.error(err.message);
       })
   };
  
   useEffect(() => {
-    checkAuthenticated();
+    //checkAuthenticated();
   }, []);
 
   const setAuth = (boolean)=>{
@@ -53,10 +51,9 @@ const Menu = lazy(()=>
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <Suspense fallback={<div>Load</div>}>
+        <Suspense fallback={<LoadingPage/>}>
         <Routes>
-          <Route path="/" element={<LoadingPage/>} />
-          <Route path="/adver" element={<CarouselLoading obj={Info}/>}/>
+          <Route path="/" element={<CarouselLoading obj={Info}/>}/>
           
           <Route exact path="/store" element={
           isAuthenticated ? 

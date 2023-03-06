@@ -1,14 +1,17 @@
 var { nanoid } = require("nanoid");
 
 module.exports = (req, res, next) => {
-    console.log(req.session.cartId)
+    console.log("cart id "+req.session.cartId)
     if (req.session.cartId) {
-        next()
+        return next()
     }else{
     req.session.cartId = nanoid(64)
     req.session.save((err) => {
-        if(!err)
-            next()
-        });
+        if (err) {
+            return next(err);
+        }
+    });
+    res.send(req.session.cartId)
+
     }
-};
+}

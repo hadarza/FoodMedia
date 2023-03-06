@@ -12,11 +12,18 @@ const CardProduct = ({product,quantity,setQuantity}) => {
         console.log("Error: ", error)
     }
 
-    const AddToCart = ()=>{
+    const AddToCart = async ()=>{
         setQuantity(quantity + 1)
         var nameProduct = (product.name).replaceAll(" ","-");
         console.log(nameProduct)
-        axiosInstance.put(`api/ShoppingCart/${nameProduct}`,{quantity: quantity+1, incrementBy:1},{withCredentials: true})
+        // {withCredentials: true}
+        await axiosInstance.put(`api/ShoppingCart/${nameProduct}`,{quantity: quantity, incrementBy:1})
+        .then(response =>{
+            console.log(response.data)
+            console.log("good")
+        }).catch(err =>{
+            console.log(err)
+        })
     }
 
     const { data: ProductImage , isError: ImageIsError , error: ImageError } = useImgByIdData(product != undefined ? product.idImage : "",onSuccess,onError)
@@ -45,7 +52,7 @@ const CardProduct = ({product,quantity,setQuantity}) => {
         </div>
 
         <div className='product-div-image'>
-            <img className='product-img' alt="product" src={`http://192.168.19.226:4000/api/dashboard/image/${ProductImage}`}/>
+            <img className='product-img' alt="product" src={`http://10.100.102.33:4000/api/dashboard/image/${ProductImage}`}/>
         </div>
     </div>
   )

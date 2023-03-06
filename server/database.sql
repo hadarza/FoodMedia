@@ -154,4 +154,3 @@ UPDATE Orders SET RestaruntId = 2 WHERE orderId = 2;
 
 
 UPDATE OrdersDetails SET ProductId = 1 WHERE orderId = 2;
-

@@ -18,7 +18,7 @@ const Cart = () => {
         .then(response =>{
             console.log(response.data)
         }).catch(err =>{
-            console.log(err)
+            console.log("error!!")
         })
     }
   return (
@@ -44,7 +44,7 @@ const Cart = () => {
                         </div>
                     </div>
                     <div className='cart-product-image'>
-                        <img src='http://192.168.19.226:4000/api/dashboard/image/1666204000180_golda.avif'/>
+                        <img src='http://10.100.102.33:4000/api/dashboard/image/1666204000180_golda.avif'/>
                     </div>
                 </div>
             ))}

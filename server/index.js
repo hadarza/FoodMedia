@@ -20,8 +20,9 @@ const RedisStore = connectRedis(session)
 const {PASSWORD_REDIS, REDIS_URL,SECRET_REDIS_SESSION} = process.env
 let client = redis.createClient({
   url: `redis://Hadar:${PASSWORD_REDIS}@${REDIS_URL}`,
-  legacyMode: true
+  // legacyMode: true
   });
+
   app.set('redisClient', client);
 
 client.connect()
@@ -29,14 +30,28 @@ client.connect()
 // middleware
 app.use(express.json()) // access to request.body
 app.use(express.urlencoded({extended: true}));
-app.use(cors({credentials:true, origin: 'http://192.168.19.226:3000'}))
+// app.use(cors())
+//{ origin: true }
+app.use(cors({credentials: true, origin: true})); // enable origin cors
 
-app.use(session({
-    store: new RedisStore({ client: client }),
-    secret: SECRET_REDIS_SESSION,
-    resave: false,
-    saveUninitialized: true
-}))
+//Configure session middleware
+// const sessionMiddleware = session({
+//   store: new RedisStore({ client }),
+//   secret: 'secret$%^134',
+//   resave: true,
+//   saveUninitialized: true,
+// })
+
+
+// app.post("/post", function(req, res){
+//   //if(req.session.user){
+//     req.session.cartId = "myname";
+//     res.send(req.session);
+//  // }
+//   console.log(req.session);
+// });
+
+app.use(sessionMiddleware)
 app.use('/api/ShoppingCart',ShoppingCart)
 app.use('/api/Product',Product)
 app.use('/api/Phone',Phone)

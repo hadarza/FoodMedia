@@ -1,13 +1,13 @@
 import React,{useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 const LoadingPage = () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    useEffect(() => {
-    setTimeout(() => {
-        navigate("/adver");
-    }, 3000);
-    }, [])
+    // useEffect(() => {
+    // setTimeout(() => {
+    //     navigate("/adver");
+    // }, 3000);
+    // }, [])
     
   return (
     <div className='background_loading'>

@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useRestaruantIdData } from '../../hooks/useRestaruantIdData';
 import { useAllRestaruantsData } from '../../hooks/useAllRestaruantsData'
 import {useImgByIdData} from '../../hooks/useImgByIdData'
-import { AnimatePresence, motion,useScroll } from "framer-motion";
+import { motion,useScroll } from "framer-motion";
 import CardProduct from './CardProduct/CardProduct';
 import HeaderMenu from './HeaderMenu/HeaderMenu';
 import AdditionalInfo from './AdditionalInfo/AdditionalInfo';
@@ -52,6 +52,11 @@ const Menu = () => {
 
       const DeleteAll = () =>{
         axiosInstance.delete(`api/ShoppingCart/${product.name}`,{ withCredentials: true })
+        .then(response =>{
+          console.log(response.data)
+      }).catch(err =>{
+          console.log(err)
+      })
       }
       return (
         <>
@@ -62,7 +67,7 @@ const Menu = () => {
             ref={ref}
             style ={{
               filter: `brightness(${val})`}}
-            src={`http://192.168.19.226:4000/api/dashboard/image/${RestaruantImage}`}/>
+            src={`http://10.100.102.33:4000/api/dashboard/image/${RestaruantImage}`}/>
           <HeaderMenu
           valText={valText} val={val}/>
         </div>

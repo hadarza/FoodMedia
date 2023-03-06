@@ -29,5 +29,5 @@ router.post('/Restaurant',DashBoardController.getAllRestaurantsByTag)
 router.post('/GetImage',DashBoardController.getImage)
 router.post('/GetInfoRestaurant',DashBoardController.getInfoRestaurant)
 router.post('/GetProductsByRestaruants',DashBoardController.getProductsByRestaruants)
-
+router.post('/xx',DashBoardController.getSomething)
 module.exports = router;

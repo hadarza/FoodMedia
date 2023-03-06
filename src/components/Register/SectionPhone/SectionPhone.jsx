@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useForm} from "react-hook-form";
 import PhoneInputSms from './PhoneInputSms';
 import InfoVerifyPhone from './InfoVerifyPhone';
@@ -14,34 +14,38 @@ const SectionPhone = ({refProgressBar,currentStep,setcurrentStep}) => {
         formState: { errors },
         control
       } = useForm();
-    
-    
-      const onSubmit = (data) => {
-        console.log(data);
-      };
+    useEffect(()=>{
+      console.log(currentStep)
+    },[currentStep])
 
-    function sendCode(){
+    const sendCode  = ()=>{
       axiosInstance.post("/api/Phone/Message",{Phone})
-      .then(res => { 
-          if(currentStep < 4 ){
-            setcurrentStep(currentStep + 1);
-            refProgressBar.current.style.width = (25 * (currentStep+1)) + '%';
-          }
-      }).catch((error) => {
-          console.log("error")
-      })  
+    .then(res => { 
+        if(currentStep < 4 ){
+          setcurrentStep(currentStep + 1);
+          refProgressBar.current.style.width = (25 * (currentStep+1)) + '%';
+        }
+    }).catch((error) => {
+        console.log("error")
+    })
     }
+       
+    // const onSubmit = (data) => {
+    //   console.log(Phone);
+    //   sendCode()
+    // };
+
   return (
     <section className='section-phone flex-col'>
-        <form onSubmit={handleSubmit(onSubmit)} className="user-info-form">
-            <InfoVerifyPhone/>
-            <div className='flex-col'> 
-              <div className='width-70'>
-                <PhoneInputSms/>
-              </div>
+        {/* <form onSubmit={handleSubmit(onSubmit)} className="user-info-form"> */}
+          <InfoVerifyPhone/>
+          <div className='flex-col'> 
+            <div className='width-input'>
+              <PhoneInputSms/>
             </div>
-            <ButtonNextStep text="Continue" func={sendCode}/>
-            </form>
+          </div>
+          <ButtonNextStep text="Continue" func={sendCode}/>
+            {/* </form> */}
     </section>
   )
 }

@@ -38,8 +38,6 @@ const getImageCarosuel = async(req,res)=>{
     const fullfilepath = path.join(dirname, image.rows[0].filepath);
     return res.type(image.rows[0].mimetype)
     .sendFile(fullfilepath);
-    }else{
-      return Promise.reject(new Error('Image does not exist'));
     }
     }catch(err){
     res.status(404).json({
@@ -132,6 +130,14 @@ const getProductsByRestaruants = async(req,res)=>{
     })
   }
 }
+const getSomething = async (req,res)=>{
+  try{
+    console.log("something")
+    res.status(200).send("ok")
+  }catch(error){
+    console.log(error)
+  }
+}
 module.exports = {
     getUser,
     getImageCarosuel,
@@ -140,6 +146,7 @@ module.exports = {
     getAllRestaurantsByTag,
     getInfoRestaurant,
     getImage,
-    getProductsByRestaruants
+    getProductsByRestaruants,
+    getSomething
 }
  

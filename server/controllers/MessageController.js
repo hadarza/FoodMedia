@@ -1,7 +1,7 @@
 
 const SendMessage = async (req,res)=>{
-    const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
-    client.verify.services(process.env.VERIFY_SERVICE_SID)
+    const client =  require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+    const check = await client.verify.services(process.env.VERIFY_SERVICE_SID)
     .verifications
     .create({to: `+${req.body.Phone}`, channel: 'sms'})
     .then(verification => console.log(verification.status))

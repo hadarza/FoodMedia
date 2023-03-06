@@ -3,7 +3,7 @@ import {BsChevronDown} from 'react-icons/bs'
 const HeaderCart = () => {
   return (
     <div className='header-order'>
-        <div className='circle-btn'>
+        <div className='circle-btn' onClick={()=>{}}>
             <BsChevronDown color='white' />
         </div>
         <div className='title-order'>

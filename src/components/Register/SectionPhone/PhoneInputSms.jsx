@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect } from 'react'
 import {Controller } from "react-hook-form";
 import startsWith from 'lodash.startswith';
 import {useSelector,useDispatch} from 'react-redux'
@@ -7,11 +7,10 @@ import Input, {
     getCountries,
     getCountryCallingCode,
   } from "react-phone-number-input/input";
-  import en from "react-phone-number-input/locale/en.json";
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-number-input/style.css'
 
-const PhoneInputSms = () => {
+const PhoneInputSms = ({ value, onChange, labels, ...rest }) => {
     const [onFocuseInput, setOnFocuseInput] = useState("");
     // const [phoneNumber, setPhoneNumber] = useState();
     const [country, setCountry] = useState();
@@ -20,29 +19,33 @@ const PhoneInputSms = () => {
     const Phone = useSelector(getPhoneNumber)
     const dispatch = useDispatch()
 
-    const CountrySelect = ({ value, onChange, labels, ...rest }) => (
-        <ul
-            className='select-country'
-          {...rest}
-          role="listbox"
-          value={value}
-          onChange={(event) => {
-            onChange(event.target.value || undefined);
-          }}>
-          <li value="" role="option">Choose a country</li>
+//     const CountrySelect = ({ value, onChange, labels, ...rest }) => (
+//         <ul
+//             className='select-country'
+//           {...rest}
+//           role="listbox"
+//           value={value}
+//           onChange={(event) => {
+//             onChange(event.target.value || undefined);
+//           }}>
+//           <li value="" role="option">Choose a country</li>
 
-          {getCountries().map((country) => (
-            <>
-            <li role="option" key={country} value={country}>
-                {labels[country]}
-                ({getCountryCallingCode(country)})
+//           {getCountries().map((country) => (
+//             <>
+//             <li role="option" key={country} value={country}>
+//                 {labels[country]}
+//                 ({getCountryCallingCode(country)})
                 
-            </li>
-            </>
-))}
-        </ul>
-      );
+//             </li>
+//             </>
+// ))}
+//         </ul>
+//       );
 
+      useEffect(() => {
+        console.log(Phone)
+
+      }, [Phone])
       
   return (
  <div className="flex">

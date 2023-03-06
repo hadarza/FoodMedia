@@ -15,6 +15,7 @@ const SectionCode =  ({refProgressBar,currentStep,setcurrentStep}) => {
   function Verify(){
     axiosInstance.post("/api/Phone/Verify",{Phone,code})
     .then(res => { 
+        console.log("phone "+ Phone + " code "+ code)
         if(currentStep < 4 && res.data.valid == true){
          refWrongCode.current.classList.add("visibility-hide")
           setcurrentStep(currentStep + 1);
@@ -23,7 +24,7 @@ const SectionCode =  ({refProgressBar,currentStep,setcurrentStep}) => {
          refWrongCode.current.classList.remove("visibility-hide")
         }
     }).catch((error) => {
-     console.log(error)
+     console.log("we have error here in verify")
    })
   }
 

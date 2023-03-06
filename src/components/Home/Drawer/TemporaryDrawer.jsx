@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React from 'react';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import SelectLocation from '../Location/SelectLocation/SelectLocation';
 import { useSelector } from 'react-redux';

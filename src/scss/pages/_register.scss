@@ -63,7 +63,11 @@ input{
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-
+.width-input{
+    width: 17rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+}
 /*section enter code*/
 .smsCode {
     text-align: center;
@@ -95,6 +99,7 @@ input{
     margin-top: 2rem;
     @include flex;
     position: relative;
+    width: 15rem;
 }
 
 /*Password Section*/

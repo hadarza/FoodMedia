@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useRef} from 'react'
 import ButtonNextStep from '../Register/ButtonNextStep/ButtonNextStep'
 import PhoneInputSms from '../Register/SectionPhone/PhoneInputSms'
 import { useNavigate } from 'react-router-dom'
@@ -10,6 +10,7 @@ import { axiosInstance } from '../../../config';
 import 'react-phone-input-2/lib/style.css'
 
 const Login = ({setAuth}) => {
+    const refErr = useRef(null);
     const navigate = useNavigate()
     const [TypeInput, setTypeInput] = useState("Password")
     const [passInput, setpassInput] = useState("")
@@ -27,7 +28,10 @@ const Login = ({setAuth}) => {
           setAuth(true)
           navigate('/store')
       }).catch((error) => {
-          console.log(error.message)
+          console.log(error.message);
+          if(refErr != null){
+          refErr.current.style.visibiliy = "visible !important";
+          }
       }) 
     }
     
@@ -43,7 +47,7 @@ const Login = ({setAuth}) => {
                     {TypeInput == "Password" ? <AiFillEye className='eye-svg' onClick={()=>{setTypeInput("Text")}}/> : <AiFillEyeInvisible className='eye-svg' onClick={()=>{setTypeInput("Password")}}/>}
                 </div>
                 <p><a className='forget-password' href="./ForgetPassword">Forget Password</a></p> 
-
+                <p ref={refErr} className="err" >wrong user/password</p>
             </div>
          
 
